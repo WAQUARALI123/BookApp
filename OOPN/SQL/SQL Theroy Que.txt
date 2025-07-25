@@ -1,0 +1,78 @@
+ChatGPT said:
+Here are the Top SQL Theory Questions most frequently asked in interviews, from basic to advanced, perfect for interview prep:
+
+🔹 1. Basic SQL Concepts
+Q1. What is SQL?
+Q2. What are the different types of SQL commands?
+➡️ DDL, DML, DCL, TCL, DQL
+
+Q3. What is the difference between DELETE, TRUNCATE, and DROP?
+Q4. What is the difference between WHERE and HAVING?
+Q5. What is the difference between UNION and UNION ALL?
+Q6. What is a Primary Key?
+Q7. What is a Foreign Key?
+Q8. What are Constraints in SQL?
+Q9. What is the difference between NULL, 0, and ''?
+Q10. What is the use of DISTINCT?
+
+🔹 2. Joins & Relationships
+Q11. What is a JOIN in SQL?
+Q12. What are the types of JOINS?
+➡️ INNER, LEFT, RIGHT, FULL OUTER, CROSS
+
+Q13. Difference between INNER JOIN and LEFT JOIN?
+Q14. What is a SELF JOIN?
+Q15. What is a CROSS JOIN?
+Q16. What is the difference between Equi Join and Non-equi Join?
+Q17. What is a Cartesian product?
+
+🔹 3. Subqueries & Set Operations
+Q18. What is a subquery?
+Q19. Difference between correlated and non-correlated subquery?
+Q20. What is the difference between IN, ANY, and ALL?
+Q21. When do you use EXISTS vs IN?
+Q22. What are SET operations in SQL?
+➡️ UNION, INTERSECT, EXCEPT
+
+🔹 4. Aggregates, Grouping, and Filters
+Q23. What are aggregate functions?
+Q24. What is the difference between COUNT(*) and COUNT(column)?
+Q25. Can we use GROUP BY without aggregate function?
+Q26. Why is HAVING used with GROUP BY?
+Q27. Can we use WHERE and HAVING together?
+
+🔹 5. Indexes & Optimization
+Q28. What is an index?
+Q29. Types of indexes in SQL?
+➡️ Clustered, Non-clustered, Composite, Unique, Full-text
+
+Q30. How does indexing improve performance?
+Q31. What is a clustered vs non-clustered index?
+Q32. What is the impact of indexes on INSERT, UPDATE, DELETE?
+
+🔹 6. Views, Transactions, and Normalization
+Q33. What is a View in SQL?
+Q34. Can we update a View?
+Q35. What is a Transaction?
+Q36. What are ACID properties?
+Q37. What is a Savepoint?
+Q38. What is Normalization?
+Q39. What are the different Normal Forms? (1NF, 2NF, 3NF, BCNF)
+Q40. What is Denormalization?
+
+🔹 7. Functions, Triggers, Procedures
+Q41. Difference between Stored Procedure and Function?
+Q42. What is a Trigger?
+Q43. Types of Triggers?
+➡️ BEFORE/AFTER INSERT, UPDATE, DELETE
+
+Q44. Can a function call a procedure and vice versa?
+Q45. Can we write DML statements in functions?
+
+🔹 8. Advanced / Real-world
+Q46. How do you find the second highest salary?
+Q47. How do you find duplicates in a table?
+Q48. How to remove duplicate records from a table?
+Q49. What are Window Functions?
+Q50. Explain the RANK(), DENSE_RANK(), and ROW_NUMBER() functions.
+

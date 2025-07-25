@@ -1,0 +1,106 @@
+                          MARKER INTERFACE
+
+
+.A marker interface is an empty interface (without methods)or fields. it is used to mark as class for special behavior
+
+why we use marker interface.
+A marker interface is used to tell the JVM or frameworks that a class has special permission or behavior.
+
+🔹 Example:
+Serializable → tells JVM: "This object can be saved to a file or sent over network."
+
+Serializable → tells JVM: "This object can be cloned."
+
+
+
+
+A marker interface is an empty interface (no methods, no fields) used to mark a class. 
+
+A marker interface helps the JVM or frameworks identify a class during execution (runtime) and apply special behavior.
+
+
+How Does Java Identify a Marker Interface?
+Java checks : if a class implements a marker interface using:
+
+Java identifies a Marker Interface using two ways:
+
+1. instanceof operator (simple check)
+2. Reflection API (advanced check)
+
+
+
+1. instanceof operator
+
+Q. What is instanceof Operator?
+A= instanceof is a built-in operator in Java that  
+   checks whether an object belongs to a particular 
+   class or interface.
+
+  If the object is an instance of the specified class   
+  or interface, it returns true; otherwise, it  
+  returns false.
+
+
+ Using instanceof with Marker Interface
+Since a Marker Interface does not have any methods, Java uses the instanceof operator to check whether a class has implemented that interface or not.
+
+
+2. What is Reflection API?
+   Reflection API is an advanced feature in Java that allows us to retrieve  
+   information about a class, its methods, and its interfaces at runtime.
+
+   It is used to check whether a class has implemented an interface without using the   
+   instanceof operator.
+
+
+
+What is Serializable?
+Serializable is a Marker Interface in Java, present in the java.io package.
+It is used to convert an object into a "byte stream" so that:
+✔ It can be saved to a file.
+✔ It can be sent over a network.
+✔ It can be stored in a database.
+
+Since Serializable is a Marker Interface, it does not contain any methods. Its mere presence is enough to tell Java that the class can be serialized.
+
+                             OR
+Since Serializable is a Marker Interface, it does not contain any methods.
+Just implementing it is enough for Java to know that the class can be serialized.
+
+
+🔹 Why Use Serializable?
+✔ To save data – If we need to store an object's state in a file.
+✔ To send over a network – To transfer an object to another computer or server.
+✔ To store in a database – If we need to save an object in a database.
+
+What is a Byte Stream?
+A byte stream is a sequence of bytes (8-bit data units) used for input and output (I/O) operations in Java. It allows data to be read or written as raw bytes, making it useful for handling binary data like images, audio, and serialized objects.
+
+🔹 How Byte Stream Works in Java?
+In Java, byte streams are handled using InputStream and OutputStream classes.
+
+✔ InputStream – Reads data as bytes.
+✔ OutputStream – Writes data as bytes.
+
+
+🔹 Byte Stream in Serialization
+In Serialization, objects are converted into a byte stream before being saved or transferred. Java uses ObjectOutputStream and ObjectInputStream for this process.
+
+
+
+What is serializable 
+
+🔷 1. Serializable kya hota hai?
+➤ Serializable ek marker interface hai:
+
+public interface Serializable {}
+Isme koi method nahi hota.
+
+Iska kaam hai: batana ki ye class ka object serialize hone layak hai.
+
+
+
+
+
+
+

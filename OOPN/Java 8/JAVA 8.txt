@@ -1,0 +1,152 @@
+                                           JAVA 8
+
+1. lambda Expression 
+
+Q. what is lambda Expression 
+
+A= lambda expression is a anonymous function 
+
+. without Name
+. without Modifier
+. without return type 
+
+Introduced in Java 8.
+
+Mainly used for functional programming.
+
+Works with functional interfaces.
+
+Example of lambda Expression
+
+Normal method
+
+public void m1(){
+
+System.out.println(Normal method);
+}
+
+making lambda expression  = remove name, remove, modifier, remove return type
+
+() ->
+{ 
+System.out.println("Lambda expression"); 
+}
+
+📌Syntax of Lambda Expression
+
+(parameters) -> { body } 
+
+
+Example:
+
+(int a, int b) -> { return a + b; }  
+
+
+Benefits of lambda expression
+
+1.Reduce the lines of code, more readable 
+2.Lambda expressions help to reduce boilerplate code
+3.Code becomes shorter and cleaner.
+4. Improves API Design
+.
+
+📌Important rules of lambda expression 
+
+1.If the body of lambda expression contain only one statement then curly braces are optional 
+2.No Need to Declare Parameter Types (Optional) 
+3.Cannot Create Lambda Without a Functional Interface
+4.Lambda Expressions Cannot Be Used for Constructors
+5.Return Statement is Optional for Single Expression
+✅ Rule:
+Lambda expression me left side ka naam (name ->) jo doge,
+right side me wahi naam use karna padega
+
+
+📌.functional interfaces
+
+If the interface contain only one abstract methods then it is functional interface 
+Ex= Runnable, callable, comparable ect.
+
+To call lambda we require functional interface   
+
+
+__________________________________________________________________________________________________________________________________
+
+
+Stream API
+
+
+Stream API was introduced in Java 8. It allows you to process collections of data (like List, Set) in a functional style.
+
+It helps to perform operations like filtering, mapping, sorting, counting, etc.
+
+It makes your code more readable, concise, and faster (especially with parallel streams).
+
+Basic Terms                Meaning
+
+stream()	    Creates a stream from a collection // List ko stream me badalta hai
+  
+filter()	    Filters elements based on a condition // filter() ka kaam hota hai: jo condition match kare wahi aage bhejna.
+
+map()               Transforms each element         // map() ka kaam hota hai: har element ko transform/change karna.
+  
+collect()	    Collects the result (usually into a list) // Final result ko List me convert karta hai
+
+forEach()	    Performs action for each element
+sorted()	    Sorts the elements
+
+
+Q. why we use stream API
+
+A: We use Stream API to process collections in a functional style.
+It removes boilerplate like loops, supports immutability, and enables easy filtering, mapping, and sorting.
+
+Or
+
+A : It makes your code Clean & readable, concise, and faster and remove the boiler plate code and  Functional style  
+    and Immutable 
+
+-------------------------------------------------------------------------------------------------------
+Q. what is functional style
+A: Functional style means writing code using functions without modifying data, using pure functions, and   
+   chaining operations in a clean, predictable way
+OR
+
+Functional style means writing code using functions without modifying data, using pure functions, and chaining operations in a clean, predictable way
+
+------------------------------------------------------------------------------------------
+Q: Where does .stream() come from?
+
+ .stream() method comes from the Collection interface and is used to convert a collection into a Stream so that it can be processed using Stream API operations.
+
+---------------------------------------------------------------------------------------
+
+Q: what is map();
+A. map() is used to transform each element of a Stream using a function and returns a new Stream with the 
+  transformed data.
+
+✅ Key Points to Remember:
+
+Applies a function to each element ✅
+
+Does not modify the original list ✅
+
+Returns a new stream with transformed elements ✅
+
+It is an intermediate operation (you can perform more operations on its output) ✅
+
+--------------------------------------------------------------------------------------
+What is the role of peek() in a stream?
+→ Used for debugging; lets you look at elements in the middle of the stream pipeline without modifying them.
+
+Is Stream API thread-safe?
+→ No, unless used with parallel streams carefully and thread-safe collection 
+
+How can you convert a Stream back to a List or Set?
+→ Use collect(Collectors.toList()) or collect(Collectors.toSet()).
+
+
+
+
+  
+ 

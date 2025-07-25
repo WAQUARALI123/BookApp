@@ -1,0 +1,646 @@
+Q1. What is SQL?
+SQL (Structured Query Language) is a standard language used to communicate with databases. It helps in storing, retrieving, updating, deleting, and managing data in relational databases.
+
+✅ What is a Relational Database?
+A Relational Database is a type of database that stores data in the form of tables (also called relations). Each table is made up of rows and columns, and the data in different tables is related to each other using keys (like primary key, foreign key).
+
+A Relational Database stores data in tables (rows and columns), where each table is related to others using keys like primary and foreign keys.
+
+Types of Data Base
+
+✅ 1. Relational Database (RDBMS)
+Data stored in tables (rows and columns)
+
+Uses SQL
+Highly structured
+🔹 Examples: MySQL, PostgreSQL, Oracle, SQL Server
+
+✅ 2. NoSQL Database
+Non-relational; used for unstructured or semi-structured data
+
+Types include:
+
+Document-based (e.g., MongoDB)
+Key-Value (e.g., Redis)
+Wide-Column (e.g., Cassandra)
+Graph (e.g., Neo4j)
+
+✅ 3. In-Memory Database
+Stores data in RAM (Memory) instead of disk
+Very fast, used in real-time apps
+🔹 Examples: Redis, Memcached
+
+
+Q2. What are the different types of SQL commands?
+➡️ DDL, DML, DQL, DCL, TCL 
+
+✅ 1. DDL (Data Definition Language)
+Used to define or modify database structure
+
+Command	Use
+CREATE	Create table or database
+ALTER	Modify existing table
+DROP	Delete table or database
+TRUNCATE	Remove all rows from a table (faster than DELETE)
+
+✅ 2. DML (Data Manipulation Language)
+Used to manipulate actual data
+
+Command	Use
+INSERT	Add new data
+UPDATE	Modify existing data
+DELETE	Remove data
+
+
+✅ 3. DQL (Data Query Language)
+Used to query data
+
+Command	Use
+SELECT	Fetch data from one or more tables
+
+
+✅ 4. DCL (Data Control Language)
+Used to control access and permissions
+
+Command	Use
+GRANT	Give user access          //  GRANT is used to give permission to other users.
+REVOKE	Take away user access      //  Remove permission from user
+
+✅ 5. TCL (Transaction Control Language)
+Used to manage database transactions
+
+Command	Use
+COMMIT	Save changes permanently
+ROLLBACK	Undo changes     // undo mean  ✅ Undo means to cancel or reverse the recent changes and go back to the previous state.
+
+SAVEPOINT	Set a save point in a transaction
+
+NOTE= ❌ No, once you COMMIT, you cannot undo the changes using ROLLBACK.
+
+
+
+
+✅ Real-Life Analogy:
+Socho aap ek ATM se paisa nikaal rahe ho:
+
+Balance check
+
+Withdraw request
+Cash dispense
+
+Update balance
+
+-------------------------------------------------------------------------------------------------------
+
+Q3. What is the difference between DELETE, TRUNCATE, and DROP?
+
+ 1. DELETE
+Used to remove specific rows from a table.
+
+🔹 You can use WHERE clause
+
+🔹 Can rollback using ROLLBACK
+
+🔹 Triggers get fired
+🔹 Slower (logs each row)
+
+⚡ 2. TRUNCATE
+Used to remove all rows from a table quickly.
+
+❌ Cannot use WHERE
+
+❌ Cannot rollback (in most databases)
+
+❌ Triggers do not fire
+
+⚡ Much faster than DELETE
+
+
+🧨 3. DROP
+Used to delete the entire table structure (table is gone forever)
+
+DROP → command is used to delete table and database
+
+
+❌ All rows + table definition is deleted
+
+❌ Cannot rollback
+
+❌ Table no longer exists
+
+
+✅ 1-Line Differences:
+DELETE → Deletes specific rows (can undo).
+
+TRUNCATE → Deletes all rows (no undo).
+
+DROP → Deletes entire table (structure + data).  // DROP → command is used to delete table and database
+
+------------------------------------------------------------
+
+Q4. What is the difference between WHERE and HAVING?
+
+
+  both are filter the data
+
+  WHERE filters data before grouping
+
+  HAVING filters data after grouping
+ 
+  but some difference 
+
+   where clause Row-level filtering	
+
+  having clause Group-level filtering (after GROUP BY)
+
+  where clause  Works on Individual rows	
+  having clause works on Groups/aggregates
+
+   with	where clause we can use SELECT, UPDATE, DELETE
+   with having use Only with SELECT (with GROUP BY)
+
+  where clause cannot use aggregate function
+  having clause use aggregate function 
+
+-------------------------------------------------
+
+Q5. What is the difference between UNION and UNION ALL?
+
+✅ UNION is used to combine the rows from two or more SELECT queries and removes duplicates by default.
+
+   select column_name from table_1
+
+  UNION 
+
+  select column_name from table_2;
+
+
+ select name from student_2023
+
+UNION 
+
+select name from student_2024;
+
+
+
+✅ UNION ALL is just like UNION, but it includes all duplicates and is faster.
+
+ select column_name from table_1
+
+ UNION ALL 
+
+select column_name from table_2;
+
+Q6. What is a Primary Key?
+
+Primary key is used to uniquely identify each row in a table.
+
+primary key Does not allow NULL values.
+
+
+CREATE TABLE employee( 
+  id INT PRIMARY KEY AUTO_INCREMENT,  
+  name VARCHAR(20)
+);
+
+
+Q7. What is a Foreign Key?
+
+A foreign key is used to connect one table to another by referring to the primary key of the other table.
+
+CREATE TABLE department (
+  dep_id INT PRIMARY KEY AUTO_INCREMENT,
+  dep_name VARCHAR(20)
+);
+
+CREATE TABLE employee (
+  id INT PRIMARY KEY AUTO_INCREMENT,
+  emp_name VARCHAR(20),
+  dep_id INT,
+  FOREIGN KEY (dep_id) REFERENCES department(dep_id)
+);
+
+
+
+✅ What is a Candidate Key?
+A Candidate Key is a column (or set of columns) in a table that can uniquely identify each row, and it does not allow NULL or duplicate values.
+
+candidate key define karte hain using UNIQUE constraint
+
+create Table student(
+
+ student_id int PRIMARY KEY,
+ email varchar(40) unique,
+ rollNo int        unique,
+ name varchar(30)
+
+);
+
+
+
+A Candidate Key is any column (or combination of columns) in a table that can uniquely identify each row — just like a primary key.
+
+
+What is a Composite Key?
+A Composite Key is a primary key that is made up of two or more columns — together they uniquely identify a row in the table.
+
+✅ What is a Unique Key in SQL?
+
+A Unique Key contains unique values, does not allow duplicate values, and allows only one NULL value.
+
+
+
+Q8. What are Constraints in SQL?
+
+🔒 What are Constraints in SQL?
+Constraints are rules applied to table columns to control the type of data that can be inserted into a table.
+
+They help in maintaining data accuracy, integrity, and reliability in the database.
+
+
+
+👉Constraints are rules used to restrict or allow certain data in a table’s columns.
+
+ Constraints are used to maintain data accuracy and integrity inside your database.
+
+Constraint = Rule to protect your data from bad or wrong values.
+
+
+Q9. What is the difference between NULL, 0, and '' ?
+
+NULL means no value or unknown value. It represents missing or undefined data in a column.
+👉 Example: A user didn’t enter their email — it's NULL.
+
+0 is a valid numeric value. It means the value exists and is zero.
+👉 Example: A student scored 0 marks — it's still a valid score.
+
+'' (empty string) is a non-null but empty text. It means value was provided, but it's blank.
+👉 Example: A user entered an empty name — it's ''.
+
+✅ Summary line to impress interviewer:
+NULL means no data, 0 means numeric zero, and '' means empty text, but all three are different and treated separately in SQL.
+
+
+Q10. What is the use of DISTINCT?
+
+DISTINCT is used to remove duplicate values from the result of a SELECT query.
+
+DISTINCT returns only unique values from a column or combination of columns.
+
+
+Q11. What is a JOIN in SQL?
+
+SQL JOINs are used to combine data from two or more tables based on a common column. They  
+   help fetch related information stored in different tables.
+
+Q12. What are the types of JOINS?
+
+
+🔹Types of SQL JOINs:
+
+1.INNER JOIN 
+2.LEFT JOIN (LEFT OUTER JOIN)
+3.RIGHT JOIN (RIGHT OUTER JOIN):
+4.FULL JOIN (FULL OUTER JOIN): 
+
+Q13. Difference between INNER JOIN and LEFT JOIN?
+
+
+INNER JOIN :Returns only the matching rows from both tables. based on the join condition.
+
+
+  If there is no match, the row is not included in the result.
+
+
+
+. SYNTAX 
+
+SELECT COLUMN_name
+FROM TableA
+INNER JOIN TableB
+ON TableA.column_name= TableB.column_name
+
+LEFT JOIN: Returns All records from the left table and the matched records from the right table.
+              If there is no match in the right table, NULL values are returned for the right table's  
+              columns.  
+
+Left Join SYNTAX 
+
+select column_name
+from TableA 
+LEFT JOIN TableB
+on TableA.column_name= TableB.columnB    
+
+Q14. What is a SELF JOIN?
+
+SELF JOIN is when a table is joined with itself.
+
+
+Q15.What is a CROSS JOIN in SQL?
+A CROSS JOIN returns the Cartesian product of two tables — every row of the first table is combined with every row of the second table.
+
+SELECT *
+FROM table1
+CROSS JOIN table2;
+
+
+
+Q16. What is the difference between Equi Join and Non-equi Join?
+
+1. Equi Join
+Equi Join joins tables using the equality operator (=) on a common column.
+
+2. Non-equi Join
+Non-equi Join joins tables using comparison operators other than =, such as >, <, >=, <=, BETWEEN, etc.
+
+
+Q17. What is a Cartesian product?
+ 
+
+Q18. What is a Subquery in SQL?
+A subquery is a query written inside another query to help retrieve data.
+
+
+
+SELECT name 
+FROM employees 
+WHERE salary > (
+  SELECT AVG(salary) FROM employees
+);
+
+
+SELECT name, salary
+FROM employees
+WHERE salary = (
+    SELECT MAX(salary)
+    FROM employees
+);
+
+
+SELECT column1
+FROM table1
+WHERE column2 = (
+    SELECT column2
+    FROM table2
+    WHERE condition
+);
+
+
+
+
+Q19. Difference between correlated and non-correlated subquery?
+
+✅ 1. Non-Correlated Subquery
+A non-correlated subquery runs independently of the outer query.
+It is executed only once, and the result is used by the outer query.
+
+SELECT name
+FROM employees
+WHERE salary > (
+  SELECT AVG(salary) FROM employees
+);
+
+
+✅ 2. Correlated Subquery
+A correlated subquery depends on the outer query.
+It is executed once for every row of the outer query.
+
+🔧 Example:
+
+SELECT name
+FROM employees e1
+WHERE salary > (
+  SELECT AVG(salary)
+  FROM employees e2
+  WHERE e1.department = e2.department
+);
+
+Q20. What is the difference between IN, ANY, and ALL?
+
+1. IN
+Checks if a value exists in a given list or subquery result.
+
+1. IN – Match with any value from a list
+
+WHERE column IN (value1, value2, value3)
+
+
+🔧 Example:
+SELECT name
+FROM employees
+WHERE department_id IN (1, 2, 3);
+
+
+✅ 2. ANY
+Compares a value to any value returned by a subquery using comparison operators like =, >, <.
+
+
+2. ANY – Compares with any value from a subquery
+
+WHERE column > ANY (subquery)
+
+
+
+🔧 Example:
+
+SELECT name
+FROM employees
+WHERE salary > ANY (
+  SELECT salary FROM employees WHERE department_id = 2
+);
+
+
+✅ 3. ALL
+Compares a value to all values returned by a subquery. The condition must be true for every row.
+
+ 3. ALL – Compares with all values from a subquery
+
+
+WHERE column > ALL (subquery)
+🔧 Example:
+
+SELECT name
+FROM employees
+WHERE salary > ALL (
+  SELECT salary FROM employees WHERE department_id = 2
+);
+
+
+
+
+
+
+
+
+ Q33. What is a View in SQL?
+A View is a virtual table based on the result of a SQL query.
+
+
+ Simple Definition (Interview Style):
+A view is a saved SQL query that looks like a table but doesn't store data physically.
+
+
+A view is a virtual table that is based on the result of an SQL query.
+It does not store actual data, but you can use it just like a regular table.
+
+
+create view view_name  AS
+
+select column1, colimn2
+from Table_name
+where condition;
+
+
+create VIEW view_emp AS
+
+select id, name, salary
+
+from employee
+
+where department = 'IT';
+
+
+
+
+CREATE VIEW active_employees AS
+SELECT id, name
+FROM employees
+WHERE status = 'active';
+
+
+Q34. Can we update a View?
+
+🔸 Yes, we can update a view, but only if it meets certain conditions.
+
+   we can update a view, but only if certain conditions are met.
+
+🔸 The view must be based on a single table
+🔸 It must not use:
+
+
+
+The view is based on a single table
+
+It does not use:
+
+JOIN
+
+GROUP BY
+
+DISTINCT
+
+UNION
+
+Aggregate functions (SUM(), AVG(), etc.)
+
+
+
+CREATE VIEW hr_employees AS
+SELECT id, name, salary
+FROM employees
+WHERE department = 'HR';
+
+
+UPDATE hr_employees
+SET salary = 60000
+WHERE id = 1;
+
+
+
+
+
+Q .with view we can perform crud operation
+
+Yes, we can perform CRUD operations on a view, but only if certain conditions are met —
+like the view is based on a single table and does not use JOIN, GROUP BY, UNION, DISTINCT, or aggregate functions like SUM(), AVG(), etc.
+
+
+OR
+yes we can perform only crud like create read update delete .but view not allowed curd with join group by union distinct aggregate function etc
+
+
+ Q35. What is a Transaction in SQL?
+A transaction is a group of SQL statements that run together as one unit.
+
+🔸 Either all statements work, or none of them work.
+
+
+A transaction is a sequence of one or more SQL operations that are executed as a single unit of work.
+Either all changes are saved (COMMIT) or none are saved (ROLLBACK) if something goes wrong.
+
+
+BEGIN;
+
+UPDATE accounts SET balance = balance - 1000 WHERE id = 1;
+UPDATE accounts SET balance = balance + 1000 WHERE id = 2;
+
+COMMIT;
+
+
+Q36. What are ACID properties?
+
+ACID stands for the four key properties of a transaction that ensure data accuracy and reliability in databases.
+
+
+ 🔹A – Atomicity
+🔸 All or nothing happens // "Either everything happens, or nothing happens."
+
+If one part of the transaction fails, the whole transaction is rolled back.
+
+Example:
+Money deducted from Account A but not added to Account B → ❌ should rollback.
+
+🔹 C – Consistency
+
+🔸 Data must always be valid before and after the transaction.
+   It must follow all rules (constraints, foreign keys, etc.)
+
+
+🔹 I – Isolation
+🔸 Transactions run independently of each other.
+One transaction’s changes should not affect another running transaction.
+
+
+🔹 D – Durability
+🔸 Once a transaction is committed, its changes are permanently saved,
+even if the system crashes.
+
+
+🔸 Once a transaction is successful (committed), its data is saved forever —
+even if your computer crashes, power goes off, or system restarts.
+
+
+
+Q 38.What is Normalization in SQL?
+   Normalization is the process of organizing data in a database to remove redundancy (duplicate data) and ensure data integrity.
+
+Normalization is the process of organizing data in a database to reduce redundancy (like duplicate data) and improve data integrity.
+
+🔹 Why Normalize?
+To avoid data duplication
+
+To save storage
+
+To make updates easier and safer
+
+To keep data clean and consistent
+
+
+
+Q42. What is a Trigger in SQL?
+A trigger is a special kind of stored program in SQL that automatically runs (fires) when a specific event happens in a table.
+
+Q42.🔸What is InnoDB?
+
+InnoDB is a storage engine used in MySQL.
+
+A storage engine is responsible for how table data is stored, managed, and accessed.
+
+ 
+ Difference: COUNT(*) vs COUNT(column_name) 
+
+ count(*) count all row including null values;
+ count(column_name) count only specific row does not count null value row
+
+
+

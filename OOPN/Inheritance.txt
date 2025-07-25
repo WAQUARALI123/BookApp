@@ -1,0 +1,311 @@
+                                    Inheritance
+
+Inheritance means to accurse the properties of parents and to create the specialized properties is known as inheritance
+
+
+is-a relationship
+
+
+Advantages of inheritance
+
+code reusability
+reduce development time
+
+how to achieve and implement inheritance
+
+by using extends keyword
+
+Note= whatever member available in the parent automatically will come to the child this concept is known as inheritance
+
+                                 OR
+
+✅Note= "All members of the parent class are automatically available in the child class. This concept   
+         is known as inheritance." 
+
+
+Note= "On the parent reference, you cannot call child-specific methods because child members are not  
+      available in the parent." ✅ 
+
+"On the parent reference, we cannot call child-specific methods or access child-specific variables."
+
+"On the child class reference, you can call methods available in both the parent and child classes."
+
+
+parents reference can be used to hold child class object. but by using that reference we can't  call any child specific method. we can call only 
+method available in parent class
+
+   
+ex= Parent p =new Child(); // correct parent can hold child oject.
+
+Note= child reference can't be used to hold parents object   
+
+ex= Child c = new Parent();
+
+Example=
+
+
+This things you should aware in the inheritance 
+
+class Parent{
+
+
+public void m1(){
+
+System.out.println("parent class method");
+}
+
+}
+
+class Child extends Parent{
+
+public void m2(){
+
+System.out.println("child class method");
+}
+
+
+}
+
+
+
+Public class Test{
+
+public static void main(String[] args){
+
+
+//First
+Parent p =new Parent();
+
+p.m1();
+p.m2(); // parent reference child specific method we can't call 
+
+
+//Second
+Child c= new Child();
+
+c.m1();
+c.m2(); // on the child reference we can call both method available in the parent class and child class
+
+//Third
+Parent p =new Child(); // parents reference can be used to hold child class object 
+
+p.m1(); // but by using  method available in the parent class not using child specific method
+p.m2(); // parents reference can't be used child specific method
+
+//Fourth
+Child c= new parent(); // child reference can't be used to hold parents object   
+}
+}
+
+
+
+Q. In the parent class which method we have to write
+Q: Which methods should be written in the parent class?
+
+A= The most common method which are common for all child classes. such type of all common method we have to write in the parent class
+
+Q. Child class which method which we have to write 
+A= child specific method 
+
+for example Loan= CarLoan, HomeLone, PresnolLoan  ever class contain 300 method
+                  250 are common method.so we can write 250 common method in separate Loan class.  
+                  and ever method come in child class by default.   
+                  
+                 like HomeLone extend Loan, and  PresnolLoan extends Loan
+
+                                  OR
+
+CarLoan, HomeLone, PresnolLoan  ever class contain 300 method
+                  250 are common method.so we can write 250 common method in separate Loan class.  
+                 These methods will automatically be inherited by all child classes.
+
+                 like HomeLone extend Loan, and  PresnolLoan extends Loan
+ 
+
+
+How many types of Inheritance 
+
+1.Single inheritance
+2.multilevel Inheritance
+3.multipal Inheritance
+4.Hierarchical Inheritance
+5.Hybrid Inheritance
+ 
+
+
+1.Single inheritance
+
+single child class, and single parent class this types of inhertance is called Single inheritance.
+
+"When a single child class inherits from a single parent class, this type of inheritance is called Single Inheritance."
+
+Key Points:
+✅ One parent, one child → Single Inheritance.
+✅ Uses the extends keyword to inherit from the parent class.
+✅ Promotes code reusability and efficiency.
+
+
+2.multilevel Inheritance
+
+what is multilevel Inheritance
+
+"When a child class inherits from a parent class, and then another child class inherits from that child class, forming a chain of inheritance, this type of inheritance is called Multilevel Inheritance."
+
+
+
+Whatever method available inside A class automatically available to B class. Whatever method available inside to B class automatically available to c class this type of inheritance is called multilevel inheritance
+
+✅"In multilevel inheritance, whatever methods are available in class A are automatically available in class B. Similarly, whatever methods are available in class B are automatically available in class C. This type of inheritance is called multilevel inheritance."
+
+Advantages of Multilevel Inheritance:
+✅ Code Reusability – Properties and methods are reused at multiple levels.
+✅ Extensibility – Additional features can be added without modifying existing code.
+✅ Method Overriding – Child classes can modify inherited methods for specific behavior.
+
+
+for Example=
+
+ Class A{
+
+All property present inside a by default available to class b 
+}
+class B extends A{
+
+All property of class a and  class B by default available to class c 
+
+}
+
+Class C extends B{
+
+All property of available class A , B 
+}
+
+
+3.multipal Inheritance
+
+✅ When a single child class inherits from multiple parent classes, this type of inheritance is called Multiple Inheritance."
+
+"When a single class extends more than one parent class, it is called multiple inheritance."
+
+Q. why java does not support multiple inheritance
+A= because of ambiguity problem and diamond access problem  
+ex 
+more than one parent p1 and p1 both have m1(); method child class confuse which parent method to call. they may be a chance of ambiguity problem   
+
+Q. how java support multiple inheritance
+A= using interface 
+
+Note= java support multiple inheritance in interface not in classes.
+
+Q: Why does Java not support multiple inheritance with classes?
+A: Because of ambiguity problems and the diamond problem.
+
+Q. why this problem only in classes. but not in the interface
+A. because in classes multiple method implementation are there which method i have to execute that's why this  
+   problem is going to come. but in interface only for declaration are available but not implementation that's
+   why there is no such type of problem in interface    
+ 
+ Q.in interface we can take default method chance of ambiguity problems
+
+
+
+Q: Why does this problem occur only in classes but not in interfaces?
+A: In classes, multiple methods can have implementations, leading to ambiguity about which method to execute. However, in interfaces, only method declarations are present without implementations, so this issue does not arise.
+
+
+
+
+===================================================================================
+
+4.Hierarchical Inheritance 
+
+"When multiple child classes inherit from a single parent class, this type of inheritance is called hierarchical inheritance."
+
+
+ Note: When multiple classes extend the same parent class, it is called Hierarchical Inheritance.
+
+
+ It is a reverse of multiple inheritance 
+
+Note= All class extend same class is called Hierarchical Inheritance  
+
+for Example
+
+class A{
+
+
+}
+
+class B extend A{
+
+}
+
+class C extends A{
+
+}
+
+Advantages of Hierarchical Inheritance:
+
+1.Code Reusability – Child classes reuse the methods of the parent class.
+
+2.Easy to Maintain – Changes made to the parent class are inherited by all the child classes, making the system easier to maintain.
+3.Logical Structure – It reflects a real-world relationship between the parent and child classes.
+
+
+Disadvantages of Hierarchical Inheritance:
+
+1.Tightly Coupled Classes – Changes in the parent class could affect all child classes.
+
+2.Reduced Flexibility – All child classes inherit the same methods from the parent, which may not always be ideal for  
+  all child classes.
+
+
+========================================================================
+
+5.Hybrid Inheritance
+
+ if multiple types of inheritance using simultaneously 
+
+ multiple group of inheritance using simultaneously is called hybrid inheritance
+When multiple types of inheritance are used simultaneously, it is called hybrid inheritance."
+
+ in java hydride inheritance is not support because hydride inheritance  using multiple inheritance  
+
+__________________________________________________________________________________________________________________________________________________
+•Types of relationship
+
+There are two types of relationship
+1.Is-A  relationship (Inheritance)
+2. Has-A relationship (Association)
+
+1.Is-A relationship: Whenever one class inherits another class, it is called an IS-A relationship
+
+Q.how we can achive is-a relationship
+ans.IS-A relationship can simply be achieved by using extends Keyword.
+
+Advantage of IS-A relationship 
+Code Reusability.
+Reduce redundancy.
+
+
+Disadvantages:
+IS-A relationship is tightly coupled, which means changing one entity will affect another entity.
+
+
+2. Has-A relationship: (Association) Whenever an instance of one class is used in another class, it is called HAS-A 
+                       relationship.
+                      
+                      One class contain another class is called has a relationship     
+                      In Java, a has-a relationship is when one class has a reference to another class  
+
+   Advantages of Has-a relationship 
+
+ 1.Code Reusability: Instead of rewriting code, one class can use another class’s functionality by containing an object of it.
+ 2. Loose Coupling (Flexibility & Maintainability)
+
+
+   There are two forms of Association 
+
+1.Aggregation(weak bounding)
+2.Composition(strong bounding)
+

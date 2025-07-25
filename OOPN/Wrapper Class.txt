@@ -1,0 +1,30 @@
+                     Wrapper Class
+
+Wrapper class is used to convert primitive data types (like int, float, char) into object form.
+
+In Java, every primitive type has a corresponding wrapper class.
+
+🔵 Why is it Important?
+1️⃣ In Java, Collections (like ArrayList, HashMap) store only objects. They cannot store primitive data types directly.
+➡️ So, if you want to put an int into an ArrayList, you need to convert it into an Integer object.
+
+Autoboxing :
+Java automatically converts an int to an Integer object. This process is called Autoboxing.
+
+Unboxing :
+
+Java automatically converts an Integer object  to  int. This process is called Unboxing.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

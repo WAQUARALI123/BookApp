@@ -1,0 +1,49 @@
+git command
+ 
+
+1. git init
+2. git add .
+3. git status
+4. git commit -m "Initial commit"
+5. git branch -M main  # Ensures the branch is named 'main' (if not already)
+6. git remote add origin <your-repo-URL>
+7. git push -u origin main
+
+
+
+NOTE= If you want to change the branch use this command
+
+1.git checkout main
+
+2.git switch main
+
+if you want to remove the git repo use this command
+
+git remote remove origin main 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

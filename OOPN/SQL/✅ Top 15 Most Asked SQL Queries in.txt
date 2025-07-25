@@ -1,0 +1,857 @@
+                                 ✅ Top 15 Most Asked SQL Queries in Interviews
+
+
+
+1.Find the second highest salary
+
+2.Find duplicate records in a table
+
+3.Find employees who joined in the last 30 days
+
+4.Find the top N salaries (e.g., top 3 salaries)
+
+5.Find total salary department-wise
+
+6.Find departments with more than 5 employees
+
+7.Perform an INNER JOIN between employees and departments
+
+8.Use LEFT JOIN to find employees without a department
+
+9.Find the highest salary in each department
+
+10.Count employees per job title
+
+11.Find employees whose names start with a specific letter (e.g., 'A')
+
+12.Find employee(s) with the maximum salary
+
+13.Find common records between two tables
+
+14.Find the number of employees hired each year
+
+15.Perform a SELF JOIN to find employees and their managers
+
+
+1.Find the second highest salary
+
+Syntax :
+
+select column_name
+from Table_name
+ORDER By column_name DESC
+LIMIT 1 OFFSET 1;
+
+select salary
+from employee
+ORDER By salary DESC
+LIMII 1 OFFSET 1;
+
+____________________________________________________________________________________
+
+2.Find duplicate records in a table
+
+select column1, column2, count(*)
+from table_name
+Group By column1, column2
+Having count(*)>1;
+
+Example :
+
+select name, email, department, count(*)
+from employee
+Group By name, email, department
+Having count(*) >1;
+
+
+ If you want to see full duplicate rows (with IDs)
+
+SELECT *
+FROM employees
+WHERE (name, email) IN (
+  SELECT name, email
+  FROM employees
+  GROUP BY name, email
+  HAVING COUNT(*) > 1
+);
+
+___________________________________________________________________________________
+
+3.Find employees who joined in the last 30 days
+ 
+SELECT id, name, department, join_date
+FROM employees
+WHERE join_date >= CURDATE() - INTERVAL 30 DAY;
+
+
+SELECT id, name, department, join_date
+FROM employees
+WHERE join_date >= CURDATE() - INTERVAL 30 DAY AND CURDATE();
+
+___________________________________________________________________________
+
+4.Find the top N salaries (e.g., top 3 salaries)
+
+select * 
+from employee
+ORDER BY salary DESC
+LIMIT 3;
+
+_________________________________________________________________________________
+
+5.Find total salary department-wise
+
+SELECT department, SUM(salary) AS total_salary
+FROM employees
+GROUP BY department;
+
+
+
+
+_____________________________________________________________
+
+
+6.Find departments with more than 5 employees
+
+select department, count(*)
+from employee 
+Group by department
+Having  count(*)>5;
+
+_____________________________________________________________________
+
+7.Perform an INNER JOIN between employees and departments
+
+
+select 
+e.emp_id, e.emp_name,
+d.dep_id, d.dep_name
+
+from Employee As e
+INNER JOIN Department AS d
+ON e.dep_id = d.dep_id;
+
+______________________________________________________________________________
+
+
+8.Use LEFT JOIN to find employees without a department
+
+SELECT 
+  e.emp_id, e.emp_name, 
+  d.dep_id, d.dep_namef
+ FROM Employee AS e
+ LEFT JOIN Department AS d
+  ON e.dep_id = d.dep_id
+ WHERE d.dep_id IS NULL;
+___________________________________________________________________
+
+9.Find the highest salary in each department
+
+select department, MAX(salary)
+from employee
+group By department;
+
+______________________________________________________________________________
+
+10.Count employees per job title
+
+select job_title, count(*) AS Emp_count 
+from employee
+Group By job_title;
+
+____________________________________________________________________
+
+11.Find employees whose names start with a specific letter (e.g., 'A')
+
+select *
+from employee
+where name LIKE ('A%');
+
+
+select *
+from employee
+where name LIKE '%A'; name end with a
+
+___________________________________________________________________
+
+
+12.Find employee(s) with the maximum salary
+
+select *
+from employee
+where salary = (select MAX(salary) from employee);
+
+select *
+from employee
+ORDER By salary DESC
+LIMIT 1;
+
+
+13.Find common records between two tables
+ 
+select *
+from TableA AS A
+INNER JOIN TableB  AS B
+ON A.id= B.id
+
+OR
+
+SELECT t1.*
+FROM table1 t1
+INNER JOIN table2 t2
+
+  ON t1.column1 = t2.column1
+ AND t1.column2 = t2.column2;
+
+
+_______________________________________________________________________________________
+
+14.Find the number of employees hired each year
+
+Select YEAR(hire_date) AS hire_year,  count(*) AS total_hired
+from employees
+group by year(hired_date)
+order by hire_year; 
+ 
+OR
+
+select YEAR(hire_date), count(*) AS total_year
+from employee 
+group by YEAR(hire_date)
+order by YEAR(hire_date);
+
+YEAR(hire_date)
+✅ YEAR() is a built-in SQL function.
+
+It takes a date value (like '2024-01-03') and extracts just the year (like 2024).
+
+So if hire_date = '2023-07-15', then YEAR(hire_date) gives 2023.
+
+_______________________________________________________________________________
+
+
+15.Perform a SELF JOIN to find employees and their managers
+
+SELECT 
+  e.name AS employee, 
+  m.name AS manager
+FROM 
+  employee e
+JOIN 
+  employee m 
+ON 
+  e.manager_id = m.emp_id;
+
+OR
+
+select e.name, m.name
+     from employee AS e
+     join employee AS m
+    
+  ON e.manager_id = e.emp_id;
+    
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+🔹 Basic SELECT Queries
+Q1. Get all employee records:
+SELECT * FROM employees;
+
+Q2. Get only name and salary:
+SELECT name, salary FROM employees;
+
+Q3. Get unique departments:
+SELECT DISTINCT department FROM employees;
+
+Q4. Get employees with salary > 50000:
+SELECT * FROM employees WHERE salary > 50000;
+
+Q5. Get employees whose name starts with 'A':
+SELECT * FROM employees WHERE name LIKE 'A%';
+
+Q6. Get employees without department:
+SELECT * FROM employees WHERE department IS NULL;
+
+Q7. Get employees ordered by salary descending:
+SELECT * FROM employees ORDER BY salary DESC;
+
+Q8. Get top 5 highest paid employees:
+SELECT * FROM employees ORDER BY salary DESC LIMIT 5;
+
+Q9. Get employees from HR or IT department:
+SELECT * FROM employees WHERE department IN ('HR', 'IT');
+
+Q10. Get employees with salary between 30,000 and 60,000:
+SELECT * FROM employees WHERE salary BETWEEN 30000 AND 60000;
+
+🔹 Aggregate Functions & GROUP BY
+Q11. Count total employees:
+SELECT COUNT(*) FROM employees;
+
+Q12. Find average salary:
+SELECT AVG(salary) FROM employees;
+
+Q13. Find minimum and maximum salary:
+SELECT MIN(salary), MAX(salary) FROM employees;
+
+Q14. Count employees per department:
+SELECT department, COUNT(*) FROM employees GROUP BY department;
+
+Q15. Average salary per department:
+SELECT department, AVG(salary) FROM employees GROUP BY department;
+
+Q16. Total salary per department:
+SELECT department, SUM(salary) FROM employees GROUP BY department;
+
+Q17. Departments with more than 5 employees:
+SELECT department FROM employees GROUP BY department HAVING COUNT(*) > 5;
+
+Q18. Highest salary per job title:
+SELECT job_title, MAX(salary) FROM employees GROUP BY job_title;
+
+🔹 JOINs
+Q19. Join employees and departments:
+SELECT * FROM employees e JOIN departments d ON e.dep_id = d.dep_id;
+
+Q20. Get employee name and department name:
+SELECT e.name, d.dep_name FROM employees e INNER JOIN departments d ON e.dep_id = d.dep_id;
+
+Q21. Get employees without department (LEFT JOIN):
+SELECT e.name FROM employees e LEFT JOIN departments d ON e.dep_id = d.dep_id WHERE d.dep_id IS NULL;
+
+Q22. Get all departments and their employees (RIGHT JOIN):
+SELECT e.name FROM employees e RIGHT JOIN departments d ON e.dep_id = d.dep_id;
+
+Q23. Full outer join between employees and departments:
+
+
+SELECT e.name, d.dep_name FROM employees e LEFT JOIN departments d ON e.dep_id = d.dep_id
+UNION
+SELECT e.name, d.dep_name FROM employees e RIGHT JOIN departments d ON e.dep_id = d.dep_id;
+Q24. Get all orders with customer details:
+SELECT * FROM orders o JOIN customers c ON o.customer_id = c.customer_id;
+
+🔹 Subqueries
+Q25. Get employee with highest salary:
+SELECT name FROM employees WHERE salary = (SELECT MAX(salary) FROM employees);
+
+Q26. Get employees in same department as ‘John’:
+SELECT name FROM employees WHERE department = (SELECT department FROM employees WHERE name = 'John');
+
+Q27. Get employees earning more than all in HR:
+SELECT name FROM employees WHERE salary > ALL (SELECT salary FROM employees WHERE department = 'HR');
+
+Q28. Get employees in departments located in Delhi:
+SELECT name FROM employees WHERE department IN (SELECT dep_name FROM departments WHERE location = 'Delhi');
+
+🔹 Set Operators
+Q29. Get employees in either 2023 or 2024:
+SELECT name FROM employees_2023 UNION SELECT name FROM employees_2024;
+
+Q30. Get employees in both 2023 and 2024:
+SELECT name FROM employees_2023 INTERSECT SELECT name FROM employees_2024;
+
+Q31. Get employees in 2023 but not in 2024:
+SELECT name FROM employees_2023 EXCEPT SELECT name FROM employees_2024;
+
+🔹 Advanced Queries
+Q32. Get second highest salary:
+SELECT MAX(salary) FROM employees WHERE salary < (SELECT MAX(salary) FROM employees);
+
+Q33. Get Nth highest salary (e.g., 3rd):
+SELECT DISTINCT salary FROM employees ORDER BY salary DESC LIMIT 1 OFFSET 2;
+
+Q34. Find duplicate employee names:
+SELECT name, COUNT(*) FROM employees GROUP BY name HAVING COUNT(*) > 1;
+
+Q35. Delete duplicate records, keep one:
+
+DELETE FROM employees
+WHERE emp_id NOT IN (
+  SELECT MIN(emp_id) FROM employees GROUP BY name, salary
+);
+Q36. Find employees without a department (JOIN method):
+SELECT e.* FROM employees e LEFT JOIN departments d ON e.dep_id = d.dep_id WHERE d.dep_id IS NULL;
+
+🔹 String & Date Functions
+Q37. Convert employee names to UPPER and LOWER case:
+SELECT UPPER(name), LOWER(name) FROM employees;
+
+Q38. Get first 3 characters of employee names:
+SELECT SUBSTRING(name, 1, 3) FROM employees;
+
+Q39. Get current date:
+SELECT CURRENT_DATE;
+
+Q40. Get number of days since joining:
+SELECT name, DATEDIFF(NOW(), joining_date) FROM employees;
+
+Q41. Format joining date as Year-Month:
+SELECT name, DATE_FORMAT(joining_date, '%Y-%m') FROM employees;
+
+🔹 DML & DDL Queries
+Q42. Insert a new employee:
+INSERT INTO employees (name, salary) VALUES ('Ali', 50000);
+
+Q43. Increase salary by 1000 for IT department:
+UPDATE employees SET salary = salary + 1000 WHERE department = 'IT';
+
+Q44. Delete employees with salary < 20000:
+DELETE FROM employees WHERE salary < 20000;
+
+Q45. Create the employees table:
+CREATE TABLE employees (id INT, name VARCHAR(100), salary INT);
+
+Q46. Add a new column 'joining_date':
+ALTER TABLE employees ADD COLUMN joining_date DATE;
+
+Q47. Drop the temporary employees table:
+DROP TABLE temp_employees;
+
+🔹 Constraints & Indexes
+Q48. Create a unique index on name column:
+CREATE UNIQUE INDEX idx_name ON employees(name);
+
+Q49. Add a check constraint for positive salary:
+ALTER TABLE employees ADD CONSTRAINT chk_salary CHECK (salary > 0);
+
+🔹 Window Functions
+Q50. Rank employees by salary:
+
+SELECT name, salary,
+RANK() OVER (ORDER BY salary DESC) AS salary_rank
+FROM employees;
+
+
+-------------------------------------------------------------------------------------------------------------------
+
+Q1. Get all employee records:
+    
+   select * from employee; 
+
+Q2. Get only name and salary:
+    
+    select name, salary
+    from employee;
+
+Q3. Get unique departments:
+    
+    select distinct departments
+    from employee;
+
+Q4. Get employees with salary > 50000:
+
+   SELECT * FROM employees WHERE salary > 50000;    
+
+    select *
+    from employee
+    where salary > 50000;
+
+Q5. Get employees whose name starts with 'A':
+
+    select * 
+    from employee
+    where name LIKE 'A%';
+
+Q6. Get employees without department:
+
+   select *
+   from employee
+   where department IS NULL;
+
+Q7. Get employees ordered by salary descending:
+ 
+   select *
+   from employee
+   order by salary DESC;
+
+Q8. Get top 5 highest paid employees:
+  
+  SELECT * FROM employees ORDER BY salary DESC LIMIT 5;
+
+     select salary
+     from employee
+     order by salary DESC
+     limit 5;
+
+Q9. Get employees from HR or IT department:
+
+     select *
+     from employee
+     where department = 'HR' OR department = 'IT'
+
+Q10. Get employees with salary between 30,000 and 60,000:
+
+  SELECT * FROM employees WHERE salary BETWEEN 30000 AND 60000;
+
+    select *
+    from employee 
+    where salary Between 30000 AND 60000;    
+ 
+     Aggregate Functions & GROUP BY
+
+Q11. Count total employees:
+   
+     select count(*) AS total_employee 
+     from employee
+
+     select count(*)
+     form employee;
+  
+    
+ Q12. Find average salary:
+
+      select AVG(salary) AS Avg_salary
+      from employee; 
+
+Q13. Find minimum and maximum salary:
+
+    select MIN(salary), MAX(salary)
+    from employee;
+
+Q14. Count employees per department:
+
+  select department ,count(*)
+  from employee 
+  group by department;
+
+ 
+Q15. Average salary per department:
+
+    select department AVG(salary)
+    from employee
+     group by department;
+
+Q16. Total salary per department:
+
+      select department, SUM(salary) AS total_salary
+      from employee
+      group by department;
+
+Q17. Departments with more than 5 employees:
+
+   select department SUM(salary) AS total_salary
+   from employee
+   group by department
+   Having count(*) > 5; 
+
+Q18. Highest salary per job title:
+
+    select job_title, MAX(salary)
+    from employee
+    group by department;
+
+ 🔹 JOINs
+
+Q19. Join employees and departments:
+
+   select *
+   from employee AS e
+   JOIN department AS d
+   ON e.dep_id = d.dep_id;
+
+
+Q20. Get employee name and department name:
+
+   select e.name AS employee_name
+          d.dep_name AS department_name
+         from employee AS e
+         inner join department AS d
+         on e.dep_id = d.dep_id;
+
+
+   select name, department
+   from employee;
+
+Q21. Get employees without department (LEFT JOIN):
+
+    select * from employee AS e
+    LEFT JOIN department AS d
+    ON e.dep_id = d.dep_id
+    where d.dep_id IS NULL;
+
+SELECT e.name
+FROM employees e
+LEFT JOIN departments d
+  ON e.dep_id = d.dep_id
+WHERE d.dep_id IS NULL;
+
+
+Q22. Get all departments and their employees (RIGHT JOIN):
+
+     select * from employee AS e
+     right join department AS d
+    on e.dep_id = d.dep_id;
+
+SELECT e.name FROM employees e RIGHT JOIN departments d ON e.dep_id = d.dep_id
+
+
+Q23. Full outer join between employees and departments:
+
+     select * from employee AS e
+     Full JOIN department AS d
+     ON e.dep_id = d.dep_id;
+
+MYSQL
+
+ select * from employee AS e
+ left join department AS d
+ON e.dep_id =d.dep_d;
+
+UNION 
+
+select * from employee AS e
+right join department  AS d
+ON e.dep_id = d.dep_id;
+
+
+Q24. Get all orders with customer details:
+
+    select * from orders AS o
+    INNER JOIN customer AS c
+    ON o.cus_id = c.cus_id;
+
+Q25. Get employee with highest salary:
+
+  select * from employee
+  order by salary DESC
+  limit 1;
+
+SELECT name FROM employees WHERE salary = (SELECT MAX(salary) FROM employees);
+   
+
+Q26. Get employees in same department as ‘John’:
+
+   select department
+   from employee
+   where name = 'john'
+   limit 1;
+
+
+    SELECT name FROM employees WHERE department = (SELECT department FROM employees WHERE name = 'John');
+
+
+Q27. Get employees earning more than all in HR:
+
+   select * from employee
+   where salary > ( 
+   select max(salary)
+   from employee 
+   where department = 'HR'  
+  );
+      
+
+ Q28. Get employees in departments located in Delhi:
+
+  SELECT e.name
+  FROM employees AS e
+ JOIN departments AS d 
+ ON e.dep_id = d.dep_id
+ WHERE d.location = 'Delhi';
+
+
+🔹 Set Operators
+
+Q29. Get employees in either 2023 or 2024:
+
+  select * from employee
+   where YEAR(join_date) IN (2023, 2024);
+
+OR
+
+SELECT name FROM employees_2023
+UNION
+SELECT name FROM employees_2024;
+
+
+Q30. Get employees in both 2023 and 2024:
+
+SELECT name 
+FROM employee_2023
+WHERE name IN (
+  SELECT name FROM employee_2024
+);
+
+
+Q31. Get employees in 2023 but not in 2024:
+
+SELECT name 
+FROM employee_2023
+WHERE name NOT IN (
+  SELECT name FROM employee_2024
+);
+
+
+🔹 Advanced Queries
+Q32. Get second highest salary:
+
+   select * from employee
+   order by salary DESC
+   limit 1 offset 1;
+
+OR
+
+SELECT MAX(salary) 
+FROM employees 
+WHERE salary < (SELECT MAX(salary) FROM employees);
+
+
+Q33. Get Nth highest salary (e.g., 3rd):
+
+SELECT DISTINCT salary
+FROM employee
+ORDER BY salary DESC
+LIMIT 1 OFFSET 2;
+
+Q34. Find duplicate employee names:
+
+select name, count(*)
+from employee AS e
+group by name
+Having count(*) >1;
+
+SELECT e1.name
+FROM employee e1
+JOIN employee e2
+  ON e1.name = e2.name AND e1.id <> e2.id
+GROUP BY e1.name;
+
+Q35. Delete duplicate records, keep one:
+
+DELETE FROM employees
+WHERE emp_id NOT IN (
+  SELECT * FROM (
+    SELECT MIN(emp_id)
+    FROM employees
+    GROUP BY name, salary
+  ) AS temp
+);
+
+
+Q36. Find employees without a department (JOIN method):
+
+ SELECT e.name, e.emp_id
+FROM employee AS e
+LEFT JOIN department AS d ON e.dep_id = d.dep_id
+WHERE d.dep_id IS NULL;
+
+
+Q37. Convert employee names to UPPER and LOWER case:
+
+  select UPPER(name), LOWER(name) from employee
+
+     
+Q38. Get first 3 characters of employee names:
+      select SUBSTRING(name, 1, 3) from employee;
+ 
+Q39. Get current date:
+     SELECT CURRENT_DATE;
+
+     select CURRDATE();
+
+Q40. Get number of days since joining:
+SELECT name, DATEDIFF(NOW(), joining_date) FROM employees;
+
+OR
+
+SELECT name, DATEDIFF(CURRDATE(), join_date) from employee;
+    
+SELECT name, DATEDIFF(NOW(), joining_date) AS days_since_joining
+FROM employees;
+
+
+Q41. Format joining date as Year-Month:
+SELECT name, DATE_FORMAT(joining_date, '%Y-%m') FROM employees;
+
+
+🔹 DML & DDL Queries
+
+Q42. Insert a new employee:
+
+ INSERT INTO Employee (name, salary) VALUES ('john', 50000); 
+
+
+Q43. Increase salary by 1000 for IT department:
+
+     UPDATE employee SET salary = salary + 1000 where department ='IT';
+
+UPDATE employees 
+SET salary = salary + 1000,
+    age = age + 1
+WHERE department = 'IT';
+
+
+
+Q44. Delete employees with salary < 20000:
+     
+     delete from employee where salary < 20000;
+
+
+    delete from employee where name ='John';
+
+   
+Q45. Create the employees table:
+ 
+  CREATE TABLE employee (
+
+  id INT,
+  name VARCHAR(20),
+  salary INT
+  );
+
+
+INSERT INTO employee(id, name, salary)
+VALUES (1, 'john', 50000);
+ 
+
+
+    create table employee(int id, name varchar(20), salary int);
+    
+    INSER INTO employee(id, name, salary) VALUES (1, 'john', 50000); 
+
+
+Q46. Add a new column 'joining_date':
+
+   ALTER Table employee Add column  joining_date DATE;
+
+
+   ALTER Table employee Add column joining_date Date; 
+
+  ALTER Table employee Add column designation varchar(50);
+
+ UPDATE employee 
+ SET designation = 'Developer' 
+ WHERE name = 'john';
+
+
+drop age column from employee
+
+ALTER TABLE employee 
+DROP COLUMN age;
+
+
+Q47.Drop the temporary employees table:
+
+    drop Table Temp_employee;
+
+DROP TABLE IF EXISTS temporary_employees;
+
+
+🔹 Constraints & Indexes
+
+Q48. Create a unique index on name column:
+
+    create UNIQUE INDEX idx_unique_name
+    ON employee(name);
+
+ 
+
+
+
+
+ 

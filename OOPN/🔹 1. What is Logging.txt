@@ -1,0 +1,169 @@
+🔹 1. What is Logging?
+Logging is the process of recording messages in an application to track execution flow, debug issues, and monitor performance. Instead of using System.out.println(), we use logging frameworks like SLF4J, Logback, and Log4j.
+
+🔹 2. Why Use Logging Instead of System.out.println()?
+Feature	System.out.println()	Logger
+Performance	Slower	Optimized for high-performance logging
+Log Levels	No levels	Supports INFO, DEBUG, ERROR, etc.
+Configurable	No	Yes (log files, formatting, filtering)
+Thread-Safety	No	Yes
+File Logging	No	Yes
+🔹 3. Setting Up Logging in Spring Boot (SLF4J + Logback)
+Spring Boot by default uses SLF4J (Simple Logging Facade for Java) with Logback as the implementation.
+
+🛠 Step 1: Add Dependencies (If Not Already Included)
+If you're using Spring Boot, SLF4J + Logback is already included. But for non-Spring projects, add this in pom.xml:
+
+xml
+Copy
+Edit
+<dependencies>
+    <!-- SLF4J API -->
+    <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>2.0.9</version>
+    </dependency>
+
+    <!-- Logback Implementation -->
+    <dependency>
+        <groupId>ch.qos.logback</groupId>
+        <artifactId>logback-classic</artifactId>
+        <version>1.4.11</version>
+    </dependency>
+</dependencies>
+🔹 4. Using Logger in Java (Basic Example)
+✅ Step 1: Import SLF4J Logger
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+✅ Step 2: Create a Logger Instance
+
+private static final Logger logger = LoggerFactory.getLogger(MyClass.class);
+✅ Step 3: Log Messages
+
+public class MyClass {
+    private static final Logger logger = LoggerFactory.getLogger(MyClass.class);
+
+    public static void main(String[] args) {
+        logger.debug("This is a DEBUG message");
+        logger.info("This is an INFO message");
+        logger.warn("This is a WARNING message");
+        logger.error("This is an ERROR message");
+    }
+}
+🎯 Expected Console Output
+
+12:00:01 INFO  MyClass - This is an INFO message
+12:00:01 WARN  MyClass - This is a WARNING message
+12:00:01 ERROR MyClass - This is an ERROR message
+By default, DEBUG messages might not be shown unless you configure logging levels.
+
+🔹 5. Understanding Log Levels
+Level	Meaning
+TRACE	Most detailed logs (used for debugging deep internals)
+DEBUG	Debugging information (useful for developers)
+INFO	General application flow (e.g., "Application Started")
+WARN	Something unexpected happened but the app is still running
+ERROR	A critical issue occurred (e.g., an exception)
+Example Usage:
+
+logger.trace("Trace log - Very detailed logs");
+logger.debug("Debug log - Useful for debugging");
+logger.info("Info log - General application messages");
+logger.warn("Warning log - Something might be wrong");
+logger.error("Error log - Something went wrong");
+
+🔹 6. Configuring Log Levels in application.properties
+Spring Boot allows you to set log levels globally or per package/class in application.properties or application.yml.
+
+📌 Example (in application.properties):
+properties
+
+# Set root log level (default is INFO)
+logging.level.root=INFO
+
+# Set log level for specific packages
+logging.level.com.example.demo=DEBUG
+If the level is INFO, only INFO, WARN, and ERROR logs will be shown.
+If the level is DEBUG, it will also show DEBUG logs.
+
+🔹 7. Writing Logs to a File
+By default, logs go to the console. You can configure logging to write into a file:
+
+📌 Example (in application.properties):
+
+# Write logs to a file
+logging.file.name=app.log
+
+# Change the log pattern (optional)
+logging.pattern.file=%d{yyyy-MM-dd HH:mm:ss} [%level] %logger{36} - %msg%n
+Now, logs will be written to app.log.
+
+🔹 8. Advanced Logging Features
+✅ 1. Logging Exceptions
+java
+Copy
+Edit
+try {
+    int result = 10 / 0;
+} catch (Exception e) {
+    logger.error("An error occurred: {}", e.getMessage(), e);
+}
+This prints:
+
+vbnet
+Copy
+Edit
+ERROR MyClass - An error occurred: / by zero
+java.lang.ArithmeticException: / by zero
+✅ 2. Using Placeholders for Performance
+Instead of:
+
+java
+Copy
+Edit
+logger.info("User " + username + " has logged in");
+Use:
+
+java
+Copy
+Edit
+logger.info("User {} has logged in", username);
+Why? Placeholders avoid unnecessary string concatenation if logging is disabled for that level.
+
+🔹 9. Logback Configuration (Advanced)
+For custom configurations, create a logback-spring.xml in src/main/resources/:
+
+xml
+Copy
+Edit
+<configuration>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>logs/application.log</file>
+        <encoder>
+            <pattern>%d{yyyy-MM-dd HH:mm:ss} [%level] %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="FILE"/>
+    </root>
+</configuration>
+This writes logs to logs/application.log.
+
+🔹 10. Summary
+Feature	Code Example
+Basic Logger	private static final Logger logger = LoggerFactory.getLogger(MyClass.class);
+Logging Levels	logger.info("Message");
+Log to File	logging.file.name=app.log
+Custom Log Format	logging.pattern.file=%d [%level] %msg%n
+Exception Logging	logger.error("Error: {}", e.getMessage(), e);
+Logback Config	logback-spring.xml
+🎯 What’s Next?
+🔹 Practice Logging in Your Spring Boot App
+🔹 Try Logging Exceptions and Writing Logs to a File
+🔹 Explore Logback XML Configurations
+
+Let me know if you have any questions! 🚀🔥

@@ -1,0 +1,150 @@
+                                Encapsulation
+
+
+
+                                                           Encapsulation
+
+
+✅ "Encapsulation means wrapping data members and member functions into a single unit. This is known as encapsulation."
+
+Q. how we can achieve encapsulation.
+A= two ways we can achieve encapsulation
+
+1.declare the variable as private 
+2.Provide Public Getter and Setter Methods. for modify and view the variable values 
+
+
+Encapsulation = data hiding + Abstraction
+
+data hiding=declare the variable as private 
+
+Abstraction= for bank example person check the balance on screen show balance Batton click and check the balance. the don't known the internal implementation which method is call
+
+✅ "Abstraction: For example, in a banking system, a person checks their balance by clicking the 'Show Balance' button. They do not know the internal implementation or which method is called."
+ 
+Note= hiding data behind method  
+
+Q. what is tightly encapsulation 
+A= If all instance variables of a class are declare private variable such type of class is called  
+   tightly encapsulation  
+   
+✅ If all instance variables of a class are declared as private, then that class is considered tightly encapsulated. 
+
+
+✅ "if a parent class is not tightly encapsulated, the child class can be tightly encapsulated by  
+    declaring all its instance variables as private
+
+
+✅ Advantages of Encapsulation (Key Points)
+1️⃣ Data Hiding (Security) – Prevents direct access to data, ensuring controlled modification via methods.
+2️⃣ Prevents Accidental Data Modification – Only setter methods allow controlled updates with validation.
+3️⃣ Increased Maintainability & Flexibility – Internal implementation changes don’t affect external code.
+4️⃣ Improves Code Reusability – Encapsulated classes can be reused in multiple applications.
+5️⃣ Easier Unit Testing – Allows testing specific methods independently.
+6️⃣ Improves Readability & Organization – Groups related variables and methods for better structure.
+
+
+
+
+
+🔷Basic Encapsulation Questions
+
+1.❓ What is encapsulation in Object-Oriented Programming (OOP)?
+A= "Encapsulation means wrapping data members and member functions into a single unit. This is known as  
+    encapsulation."
+  two ways we can achieve encapsulation
+
+1.declare the variable as private 
+2.Provide Public Getter and Setter Methods. for modify and view the variable values 
+
+
+2.How does encapsulation different from abstraction?
+
+Encapsulation: 
+
+1.Encapsulation means wrapping data members and member functions into a single unit. This is known as  
+    encapsulation
+2.two ways we can achieve encapsulation
+
+1.declare the variable as private 
+2.Provide Public Getter and Setter Methods. for modify and view the variable values 
+
+3.Encapsulation hiding the data
+
+
+Abstraction:
+
+1.Abstraction mean hiding the implementation and showing essential feature is known as abstraction
+
+2.we can achieve abstraction use abstract class and abstract keyword 
+
+3.Abstraction hiding the implementation 
+
+
+
+3.❓Why do we need encapsulation in Java?
+
+A= hiding the internal data and outside class can't access our internal data directly. like our data Protects   
+   Reusability & Modularity
+   Control Over Data
+   
+
+4.❓How can we achieve encapsulation in Java?
+
+A= Two ways we can achieve encapsulation
+
+1.declare the variable as private 
+2.Provide Public Getter and Setter Methods. for modify and view the variable values 
+
+5.❓What are the benefits of encapsulation?
+
+
+🔷Intermediate Encapsulation Questions
+
+1.Can we access private variables outside the class? If yes, how?
+
+A= we can use getter and setter method
+
+2.What are getter and setter methods? Why are they used?
+
+3.How does encapsulation improve data security?
+
+4.What is the difference between encapsulation and data hiding?
+
+5.Can a class be encapsulated without having getter and setter methods?
+
+
+Advanced Encapsulation Questions
+
+
+1.Can we achieve encapsulation without using access modifiers?
+
+2.If a class has only getter methods and no setter methods, is it still encapsulated?
+
+3.Can we override getter and setter methods in a subclass?
+
+4.What happens if we do not use encapsulation in a large project?
+
+5.How does encapsulation support maintainability and reusability in real-world applications?
+
+6.Is it a good practice to make all variables private and provide only getters and setters? Why or why not?
+
+7.How does encapsulation relate to SOLID principles in OOP (Single Responsibility Principle, Open-Closed Principle,   
+   etc.)?
+
+8.Can encapsulation be violated in Java? If yes, how?
+
+9.Explain how encapsulation is implemented in frameworks like Spring or Hibernate.
+
+10Give a real-world example where encapsulation is effectively used.
+
+
+🔷Bonus: Coding Interview Questions
+
+1.Write a Java program demonstrating encapsulation with a BankAccount class.
+
+2.Create an encapsulated class where a Student object cannot have a negative age.
+
+3.Modify an encapsulated class to allow only read access to a variable (no setters).
+
+4.Implement encapsulation in a Car class where speed cannot be set beyond a certain limit.

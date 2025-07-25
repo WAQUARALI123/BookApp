@@ -1,0 +1,394 @@
+Stream API
+ 
+✅ Most Common Coding-Based Stream Questions in Interviews
+
+
+✅1.List of names  W se start hone wale names uppercase me return karo
+   . Convert a list of strings to uppercase
+
+✅ 2. List of integers me se even numbers nikaalo
+    . Extract even numbers from a list of integers
+
+✅ 3.List se duplicate remove karo
+    . Remove duplicates from a list
+
+✅ 4.List of strings ko sort karo
+    .Sort List of string
+ 
+✅5. List ko ascending order me sort karo
+    .Sort a list of Integer in ascending order
+
+✅ 6. List ko descending order me sort karo
+     . Sort a list in descending order
+
+✅ 7.List me se max/min value find karo
+    .Find max/min value from list
+
+✅ 8. Max and Min value find karo
+
+✅ 9.List ke elements ka sum ya average nikaalo
+      List ka sum nikaalo
+      List ka average nikaalo
+      Find the sum of a list
+      Find the average of a list
+
+✅ 10.String list me se W se start hone wale names filter karo
+      .Filter names that start with 'W'
+
+✅ 11.List ke har element me 2 add karke collect karo. 
+      .Add 2 to every element of the list
+
+✅ 12.String list ko join karo ek single string me (comma-separated)
+     . Join list of strings into one string
+
+✅ 13.List of objects me se specific field ka list banao
+      .Extract a field (name) from a list of objects
+
+✅ 14.Object list me age > 30 wale log count karo
+     . Count employees older than 30
+
+✅ 15. Object list ko salary ke basis pe descending order me sort karo 
+      .Sort employees by salary (descending)
+
+✅ 16. Employee list ko department ke according group karo
+      . Group employees by department
+
+✅ 17. List me se pehle 5 elements lo
+      .Get the first 5 elements from a list
+
+✅ 18. List me se first 5 hata do (skip karo)
+      . Skip the first 5 elements from a list
+
+✅ 19. Check karo koi bhi element negative to nahi (anyMatch)
+      . Check if any element is negative
+
+✅ 20.Check karo sabhi elements positive hain ya nahi (allMatch)       . 
+     .Check if all elements are positive
+ 
+✅ 21.List me se null values hatao 
+     .Remove null values from a list
+
+____________________________________________________________________________---
+      
+
+
+✅1.List of names W se start hone wale names uppercase me return karo
+   . Convert a list of strings to uppercase
+
+  List<String> names = Arrays.asList("abc", "waquar", "dell");
+
+   List<String> result= names.stream()
+  .filter(name -> name.startsWith("w"))
+  .map(String::toUpperCase)
+  .collect(Collectors.toList());
+   
+   System.out.println(result);
+
+
+✅ 2. List of integers me se even numbers nikaalo
+    . Extract even numbers from a list of integers
+
+
+List<Integer> even =Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+
+List<Integer> result= even.stream()
+.filter(no -> no%0==2)
+.collect(Collectors.toList());
+System.out.println(result);
+
+
+
+✅ 3.List se duplicate remove karo
+    . Remove duplicates from a list
+
+
+    List<Integer> number = Arrays.asList(1,2,3,1,2,3,4,5,6,2,5);
+	 
+     List<Integer> removeDupli= number.stream()
+     .distinct()    // ✅ removes duplicates
+     .collect(Collectors.toList());
+	 
+	 System.out.print(removeDupli);
+		
+✅ Key Points:
+Sirf unique elements ko allow karta hai.
+
+Order maintain karta hai (original list ka).
+
+Works similar to Set behavior, but in stream style.
+
+
+
+✅ 4.List of strings ko sort karo
+    .Sort List of string
+
+
+	List<String> names = Arrays.asList("dell", "abc","zebronic");	
+	
+	List<String> sort= names.stream()
+	.sorted()
+	.collect(Collectors.toList());
+	 System.out.print(sort);
+
+//✅5. List ko ascending order me sort karo
+ //   .Sort a list of Integer in ascending order
+
+
+List<Integer> number = Arrays.asList(2, 3, 1, 3, 6, 4, 3, 9, 7);
+
+List<Integer> sort = number.stream()
+    .sorted()  // 🔼 Ascending order
+    .collect(Collectors.toList());
+
+System.out.println(sort);
+
+
+
+✅ 6. List ko descending order me sort karo
+     . Sort a list in descending order
+
+
+List<String> names = Arrays.asList("dell", "abc", "zebronic");
+
+List<String> sortedDesc = names.stream()
+    .sorted(Comparator.reverseOrder())  // 🔽 Reverse (descending) order
+    .collect(Collectors.toList());
+
+System.out.println(sortedDesc);  // Output: [zebronic, dell, abc]
+
+
+
+✅ 7.List me se max/min value find karo
+    .Find max/min value from list
+
+
+List<Integer> number = Arrays.asList(2,3,1,4,5);
+
+Optional<Integer> max= number.stream().max(Integer::CompareTo);
+Optional<Integer> min= number.stream().min(Integer::CompareTo);
+
+max.ifPresent(value -> System.out.print("Max Value"+ value));
+min.ifPresent(value -> System.ot.print("Min value"+ value));
+
+✅ 8. Max and Min value find karo
+
+List<Integer> number =Arrays.asList(2,3,4,1,5);
+
+
+Integer max = number.stream().max(Integer::compareTo).orElse(-1);
+Integer min = number.stream().min(Integer::compareTo).orElse(-1);
+
+System.out.println("Max value"+ max);
+System.out.println("Min value" + min);
+
+
+✅ 9.List ka sum nikaalo
+✅  .List ka average nikaalo
+      Find the sum of a list
+      Find the average of a list
+
+            //List ka sum nikaalo
+	    //Find the sum of a list
+
+  
+    List<Integer> number = Arrays.asList(2,3,5,10);
+  
+   int sum= number.stream()
+   .mapToInt(Integer:: intValue)
+   .sum();
+
+    System.out.println(sum);
+
+.mapToInt kiyu use karte he
+
+Ye har Integer ko int (primitive) bana deta hai
+
+Fir IntStream milta hai
+
+Jisme .sum() available hota hai ✅
+
+✅ Integer::intValue kya karta hai?
+
+Integer x = 10;
+int y = x.intValue(); // Object se primitive int nikalta hai
+
+
+✅. List ka average nikaalo
+
+
+    List<Integer> number =Arrays.asList(5,10,15,20);
+		 
+    double avg = number.stream()
+    .mapToInt(Integer:: intValue)
+    .average().orElse(-1);
+		
+    System.out.println(avg);
+
+
+
+
+✅ 10.String list me se W se start hone wale names filter karo
+      .Filter names that start with 'W'
+
+
+   ArrayList<String> list = Arrays.asList("waquar", "abc", "wwe");
+   
+   ArrayList<String> result = list.stream()
+   .filter(name -> name.startWith("w"))
+   .collect(Collectors.toList());
+
+
+✅ 11.List ke har element me 2 add karke collect karo. 
+      .Add 2 to every element of the list
+
+
+
+ArrayList<Integer> list = Arrays.asList(2,3,4,5,6,8);
+
+ArrayList<Integer> result = list.stream();
+
+.map(no -> no+2);
+.collect(Collectors.toList(());
+
+
+System.out.println(result);
+
+
+
+✅ 12.String list ko join karo ek single string me (comma-separated)
+     . Join list of strings into one string
+
+
+ArrayList<String> name = Arrays.asList("ABC", "Dell", "Samsung");
+
+String join= name.stream()
+.collect(Collectors.join(", "));
+
+System.out.println(join);
+
+
+✅ 13.List of objects me se specific field ka list banao
+      .Extract a field (name) from a list of objects
+
+ 
+List<String> names = employees.stream()
+    .map(Employee::getName)
+    .collect(Collectors.toList());
+
+
+✅ 14.Object list me age > 30 wale log count karo
+     . Count employees older than 30
+
+
+
+List<Employee> employees = Arrays.asList(new Employee("Ali", 25),new Employee("John", 35));
+
+
+long count = employess.stream();
+
+.filter(e-> e> age)
+.count();
+
+
+
+
+List<Integer> list = Arrays.asList(10, 40, 50, 23, 31);
+
+        long count = list.stream()
+            .filter(e -> e > 30)   
+            .count();              
+
+        System.out.println("Count: " + count);  // Output: 3
+
+
+
+
+15. Object list ko salary ke basis pe descending order me sort karo 
+      .Sort employees by salary (descending)
+
+
+                   List<Employee> employees = Arrays.asList(
+		    new Employee("Ali", 30_000),
+		    new Employee("Waquar", 50_000)
+			);
+
+
+
+                           List<Employee> sorted = employees.stream()
+			    .sorted((e1, e2) -> Double.compare(e2.getSalary(), e1.getSalary()))
+			    .collect(Collectors.toList());
+
+
+✅ 16. Employee list ko department ke according group karo
+      . Group employees by department
+
+
+List<Employee> employees = Arrays.asList(
+    new Employee("Ali", "HR"),
+    new Employee("Waquar", "IT")
+);
+
+Map<String, List<Employee>> grouped = employees.stream()
+    .collect(Collectors.groupingBy(Employee::getDepartment));
+
+
+✅ 17. List me se pehle 5 elements lo
+      .Get the first 5 elements from a list
+
+List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
+
+List<Integer> first5 = numbers.stream()
+    .limit(5)
+    .collect(Collectors.toList());
+
+
+
+
+✅ 18. List me se first 5 hata do (skip karo)
+      . Skip the first 5 elements from a list
+
+ArrayList<Integer> number = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8);
+
+ArrayList<Integer> skip = number.stream()
+.skip()
+.collect(Collectors.toList());
+
+
+
+✅ 19. Check karo koi bhi element negative to nahi (anyMatch)
+      . Check if any element is negative
+
+
+List<Integer> number = Arrays.asList(-2,2,1,3,-3);
+
+
+boolean hasNegative = numbers.stream()
+    .anyMatch(n -> n < 0);
+
+
+
+✅ 20.Check karo sabhi elements positive hain ya nahi (allMatch)       . 
+     .Check if all elements are positive
+
+List<Integer> number = Arrays.asList(1,2,3,4,5,6,7);
+		
+		boolean positiveNumber = number.stream()
+		 
+		.allMatch(n -> n>0);
+		
+		System.out.print(positiveNumber);
+
+
+
+✅ 21.List me se null values hatao 
+     .Remove null values from a list
+
+		List<String> names= Arrays.asList("waquar", null, "ali", null, "Dell","abc");
+
+List<String> remove = names.stream()		
+		
+.filter(Objects::nonNull)
+.collect(Collectors.toList());
+
+	System.out.println(remove);
+	}

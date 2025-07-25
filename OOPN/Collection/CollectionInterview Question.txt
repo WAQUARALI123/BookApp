@@ -1,0 +1,293 @@
+
+                     Collection
+
+🔹 Basic Collection Interview Questions
+
+
+1.What is the difference between ArrayList and LinkedList?
+
+2.What is the difference between HashSet and TreeSet?
+
+3.What are the main interfaces in the Java Collection Framework?
+
+4.What is the difference between List, Set, and Map?
+
+5.What is the difference between HashMap and Hashtable?
+
+6.What is the load factor in a HashMap?
+
+7.Can a HashMap have null keys and values?
+
+8.What is the difference between fail-fast and fail-safe iterators?
+
+9.How does HashSet work internally?
+
+10.What is the difference between Iterator and ListIterator?
+
+🔐 Masked / Tricky Questions (These test depth)
+1.How does HashMap handle collisions internally?
+
+Answer: Uses chaining (LinkedList or Tree structure from Java 8 onward).
+
+2.What will happen if two keys have the same hashCode?
+
+They will be placed in the same bucket; equals() will be used to differentiate them.
+
+3.Can we insert a duplicate key in a HashMap?
+
+No — it will overwrite the previous value.
+
+4.Why is HashSet backed by HashMap?
+
+It uses keys of the map to store set elements (value is a dummy object).
+
+5.What is the time complexity of get() and put() in HashMap?
+
+Best case: O(1); Worst case: O(n) (but rare due to resizing and tree optimization).
+
+6.What happens when the number of elements exceeds the capacity in HashMap?
+
+It resizes (doubles the capacity) and rehashes all keys.
+
+7.What is the difference between Comparable and Comparator?
+
+Comparable is used for natural ordering, Comparator for custom ordering.
+
+8.Can we make a custom object a key in HashMap? What should we override?
+
+Yes — override equals() and hashCode() properly.
+
+9.What is the difference between ConcurrentHashMap and Collections.synchronizedMap()?
+
+ConcurrentHashMap is more efficient and divides locking internally by segments.
+
+10.How does TreeMap store elements?
+
+It uses a Red-Black tree (a type of self-balancing binary search tree).
+
+
+
+______________________________________________________________________________________________________
+
+Q1. what is the difference between ArrayList and LinkedList
+
+A= ArrayList :
+
+1.The underlying data structure of arraylist is growable or resizable array
+2.In the case of arraylist elements are store in contiguous memory allocation
+3.ArrayList work on index 
+4.Arraylist is good for retrieval operation 
+5.ArrayList is better for storing and accessing data
+
+LinkedList :
+
+1.The underline data structure of linked list is doubly linked list 
+2.In the case of linked list elements are not store in contiguous memory allocation
+3.Linked list work on node 
+4.Linked list is good for insertion or deletion operation 
+5.Linked list is better for manipulating data.
+  
+
+____________________________________________________________________________________________________
+Q2. What is the difference between HashSet and TreeSet?
+
+A= HashSet :
+
+1.HashSet: The underlying data structure of HashSet is a HashMap. .// Internally uses a HashMap.
+2.Insertion order is not preserved.
+3.HashSet allows one null element.
+4.When you just need a collection of unique elements without sorting order, and better performance you should use hashset.
+5. HashSet is faster but unsorted.
+5.HashSet: Basic operations like add(), remove(), contains() take O(1) time on average.
+
+
+
+
+
+
+
+
+TreeSet : 
+
+1.TreeSet: Internally uses a TreeMap (which is based on a Red-Black Tree, a type of self-balancing binary search tree).
+2. Insertion order is not  preserved
+3.Does not allow null elements if you use natural ordering (throws NullPointerException).
+4.When you need a collection of unique elements in sorted order. you should use treeset
+5.TreeSet is slower but gives sorted elements.
+5.TreeSet:Operations like add(), remove(), contains() take O(log n) time because it needs to maintain the tree balance and order.
+
+
+Q3.What are the main interfaces in the Java Collection Framework?
+
+Q4.What is the difference between List, Set, and Map?
+
+Note: List and Set both are child interface of collection interface. map is not child  
+      interface of collection
+
+1:List:
+
+1.List follow the insertion order
+2.List allow duplicate element
+3.List supports index-based access, and you can retrieve elements using the list.get(index) method.
+
+2:Set 
+
+1.Set does not follow insertion order for all implementing classes.
+2.Set duplicate elements are not allowed
+3.Set does not support indexing — you can't access elements by index.
+  
+3: Map
+
+1.map store the data key value pair
+2.key must be unique but value can be duplicate
+3.Elements are accessed by key (e.g., map.get(key)), not by index like in List.
+4.Not a subtype of Collection: It’s a separate interface. 
+
+
+5.What is the difference between HashMap and HashTable?
+
+HashMap :
+
+1.hashmap method is not synchronized. it is not thread safe
+2.Allows one null key and multiple null values
+3.It is introduced in the 1.2 version.
+4.It is non-legacy.
+5.If You don’t need thread safety, and  You want better performance you should use hashmap.	
+6.hashmap time complexitiesis is o(1) 
+
+HashTable :
+
+1.hashtable every method is synchronized. it is thread safe
+2. Does not allow null keys or values Otherwise, we will get a null pointer exception.
+3.It is introduced in the 1.0 version.
+4.It is a legacy.
+5.if You need thread-safe operations you should use hashtable. 
+
+Note: HashMap and Hashtable have same theoretical time complexity.
+
+     But HashMap is faster in practice because it’s not synchronized.
+     For thread-safe needs, use ConcurrentHashMap, not Hashtable.
+
+
+Q6. What is the load factor in a HashMap?
+
+A= Load factor is a number that tell the hashmap should grow bigger.
+   when the map is 75% full, it will automatically resize make more space.
+
+Q7.Can a HashMap have null keys and values?
+
+A="Yes, HashMap allows one null key and multiple null values."
+
+Q8.What is the difference between fail-fast and fail-safe iterators?
+
+A= Fail-fast: iterators throw a ConcurrentModificationException if the collection is changed while  
+   iterating.
+   Example: ArrayList, HashMap iterators.
+
+
+Fail-Safe: iterators are available in concurrent collections like CopyOnWriteArrayList or ConcurrentHashMap.  
+    These collections allow modifications during iteration without throwing exceptions.
+
+
+Fail-safe iterators do not throw exceptions because they work on a copy of the collection.
+Example: ConcurrentHashMap, CopyOnWriteArrayList.
+
+What is ConcurrentHashMap?
+
+ConcurrentHashMap is a thread-safe version of HashMap in Java.
+
+It allows multiple threads to read and write safely without throwing ConcurrentModificationException.
+
+It is part of the java.util.concurrent package (since Java 1.5).
+
+
+
+Q9.How does HashSet work internally?
+
+A=Hashset is a child class of set interface, and it is based on the hashmap. hashset does not allow 
+  duplicate element. Insertion order is not preserved. Internally ,when we add an element to a HashSet, it is stored as a key in the underlying HashMap, and the value is a constant dummy object (usually Boolean.TRUE). This is because HashMap stores data in key-value pairs, and HashSet only needs the keys. HashSet relies on the hashCode() and equals() methods to ensure uniqueness." 
+
+Q.10.What is the difference between Iterator and ListIterator?
+
+A= Iterator : 
+
+1.Iterator is used to retrieve elements one by one from any Collection.
+2. Iterator is applicable for all collection classes
+3. Iterator has 3 metohd 
+   hasNext() // return true/false
+   next()//   return iterator element
+   remove() 
+4.Iterator retrive the element only forward direction
+5.Iterator retrive the element using iterator() method
+
+ListIterator : 
+
+1."ListIterator is a cursor used to retrieve elements one by one from a List."
+2. ListIterator is applicable for only List implementations classes. 
+3. ListIterator has 9 method
+   hasNext(), next(), remove(), hasPrevious(), previous(), nextIndex(), previousIndex() add(E e),  
+   set(E e)
+4. ListIterator retrive the element forword direction and backword direction.
+5. ListIterator retrive the element using listIterator() method.
+
+
+Q11. What is the difference between Comparable and Comparator?
+
+ Comparable:
+
+1.It is an interface it is present in  java.lang package.
+2.Comparable is used for default natural ordering
+3.compareble interface caontain only one method compareTo();
+
+
+Comparator :
+
+1.It is an interface it is present in  java.lang package.
+2.Compaoator define customized sorting order
+3.It Define two methods 
+compare()
+equal();
+
+
+
+____________________________________________________________________
+
+Q12.what is the difference between Array and ArrayList
+
+Array :
+
+1.Array is fixed in size
+2. Array can store both primitives and object (int, char, etc.)
+3.Array has no method work manually
+4.Array performance is faster
+5.Array store only homogeneous type of element 
+
+
+ArrayList :
+
+1.ArrayList is growable 
+2.Arraylist store only objects (e.g., Integer, not int)
+3.ArrayList Has many built-in methods like .add(), .remove(), .contains()
+4.ArrayList performance is slower than array (because of resizing and object overhead).
+5.ArrayList store both homogeneous and heterogeneous type of element 
+
+  
+
+Vector :
+
+Vector is best used when you need a thread-safe and it is best when our frequent is to fetch element randomly 
+with synchronization 
+
+___________________________________________________________________________________________________________________
+
+
+
+Q13.What is the difference between Collection and Collections
+
+A= Collection :Collection is a interface if we want to represents a group of object in a single entity. then we should go  for collection
+   interface. this interface define the most common general method which can is applicable for any collection object. 
+
+  Collections : Collections is a utility class present in java.util.package to define several utility methods for collection object.
+  utility methods are sort(List), min(Collection), max(Collection), 
+   
+ 

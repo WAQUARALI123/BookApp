@@ -1,0 +1,149 @@
+                                                         Interface
+
+Q. what is interface ?
+
+A= An interface is a blueprint of a class that define a set of abstract methods and by default public static final  
+   variables. from java 8 interface can also have default and static method with implementation. Java 9 further  
+   introduced private methods in interfaces.
+   Interfaces are mainly used to achieve abstraction, support multiple inheritance, and provide loose coupling .   
+
+
+🔷 Why Use an Interface?
+✅ Achieves Abstraction → Hides implementation details, defining only required behavior.
+✅ Supports Multiple Inheritance → A class can implement multiple interfaces, avoiding conflicts.
+✅ Encourages Loose Coupling → Reduces dependencies between components in a system.
+
+
+Q. why interface variables are  public static final ?
+A = Interface variables public: because accessible anyware and child class provide implment
+    Interface variables static: because do not belong to any object (instance); they belong to the interface itself.
+    
+    Interface variables final: Interface variables are meant to be constants (fixed values).
+    Since interfaces are designed to define behavior, not state, making variables modifiable would go against this   
+    principle.
+    Once assigned, the value cannot be changed. 
+
+
+🔷 Common Interview Follow-Up Questions:
+❓ Can an interface have concrete methods?
+✔ Yes, after Java 8, interfaces can have default and static methods with implementation.
+
+❓ Can an interface have constructors?
+❌ No, because interfaces cannot be instantiated directly.
+
+❓ What is the difference between an abstract class and an interface?
+✔ Abstract Class: Can have constructors, instance variables, and method implementations.
+✔ Interface: Cannot have instance variables, but supports multiple inheritance.
+
+
+
+
+
+Q. what is default method in interface why java introduce and what use
+A= "A default method is a method in an interface that provides an implementation inside the interface. It was introduced in Java 8 to  
+   allow adding new methods to interfaces without breaking existing code."
+
+
+Interface is a service requirement specification.
+Interface are the blue print of the class
+✔ Before Java 8: Interfaces were 100% abstract
+❌ After Java 8: Interfaces are not 100% abstract anymore because they can have default and static methods.
+Interface is used to  achieve abstraction and multiple inheritance and also provide loos coupling                                                
+"An interface is used to achieve abstraction and multiple inheritance, and it also provides loose coupling." 
+
+
+Note= whenever we are implementing any interface method in child class. compulsory we should declare method must be public.
+"Note: Whenever we implement an interface method in a child class, we must declare the method as public."        
+
+Note= whenever we are declaring interface in abstract method. every method must be provide   
+     implementation in child class. if we are unable provide implementation we must declare class as   
+      abstract.  
+                         OR
+
+"Whenever we declare an interface with abstract methods, every method must be implemented in the child class. If we are unable to provide an implementation, we must declare the class as abstract."
+
+
+Q. Difference between Abstract class and Interface
+
+
+🔷Abstract class
+
+1.Abstract class provide 0 To 100% abstraction
+2.Abstract class contain both concreate and abstract method
+3.Abstract class has constructor
+4.Abstract class does not support multiple inheritance
+5.If we know at least some part of the implementation, we should use an abstract class."
+  "If we know at least 1% of the implementation, we should use an abstract class." 🚀
+
+🔷Interface
+
+1.Interface provide 100% abstraction (before Java 8), but from java 8 support default and static method
+2."Before Java 8, an interface contained only public and abstract methods. From Java 8   
+   interfaces can also have default, static, and private methods."
+3.Interface does not contain constructor
+4.Interface support multiple inheritance
+5."If we don’t know any part of the implementation (0%), we should use an interface."
+
+
+Q why abstract class support constructor and interface does not support constructor
+
+
+Practice Coding-Based Questions:
+
+1.Create an interface with one method and implement it in a class.
+
+2.Create an interface with a default method and override it in a class.
+
+3.Create a class that implements two interfaces having same method — resolve the conflict.
+
+4.Demonstrate interface reference = new implementing class() example.
+
+5.Write code where an interface extends another interface.
+
+
+
+//3.Create a class that implements two interfaces having same method — resolve the conflict.
+
+
+interface A{
+
+public void default show(){
+
+System.out.println("from A interface");
+}
+}
+
+interface B{
+
+public void default show(){
+
+System.out.println("from A interface");
+}
+}
+
+public class Test {
+
+public void show(){
+
+A.super.show();
+B.super.show();
+}
+
+public ststic void main(String[] args){
+
+Test t =new Test();
+
+t.show();
+
+}
+
+}
+
+
+
+
+
+
+
+
+

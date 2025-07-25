@@ -1,0 +1,196 @@
+                                HashMap
+
+✅ 1. What is a HashMap?
+A HashMap is a part of map interface. It stores data in key-value pairs.
+
+underline data structure is hashtable.
+
+
+
+Duplicate keys not allowed, but duplicate values are allow.
+hashmap is notsynchronize 
+it is not thread safe
+Allows one null key and multiple null values
+it introduce 1.2. it is not a legacy class
+if you don't need a thread safe, and you want better performance you should use hashmap.
+
+
+✅ 2. Basic Syntax OF HashMap
+
+HashMap<String Integer> map= new HashMap<>();
+         Key    Value
+
+Here, String is the key type, and Integer is the value type.
+
+✅ 3. Common Methods
+ 
+   Method  
+ 
+1.put(key, value)                 //put() method add the data 
+2.get(key)                        //get() method return the value corresponding to the key  
+3.remove(key)                     //remove() method remove key-value pair
+4.containsKey(key)                //containsKey() method check if the key exists and return true false  
+5.containsValue(value)            //containsValue() method check if the value exists and return true false
+6.size()                      //size() returns the number of key-value pairs currently stored in the HashMap.
+7.isEmpty()                  //isEmpty() method returns true if the map has no entries
+8.clear()                   //Remove all entries   
+
+
+What is the use of hm.keySet()?
+✅ It returns a Set of all the keys in the HashMap.
+
+Set<Integer> keys = hm.keySet();
+System.out.println(keys);
+
+for (Integer key : hm.keySet()) {
+    System.out.println("Key: " + key + ", Value: " + hm.get(key));
+}
+
+hm.keySet() ka kaam kya hai?
+Ye tumhe HashMap ke saare keys ek Set ke form me deta hai.
+
+
+What is getOrDefault() in Java HashMap?
+🔹 Purpose:
+It returns the value for a key if it exists, otherwise returns a default value you provide.
+
+Syntax:
+map.getOrDefault(key, defaultValue);
+
+
+
+ Entry is an interface that represents a single key-value pair in a map.
+
+It has three important methods:
+
+getKey(): Retrieves the key.
+
+getValue(): Retrieves the value associated with the key.
+
+setValue(V value): Allows updating the value of a specific key.
+
+It provides methods to get the key and get the value.
+
+It's commonly used to iterate through a Map when you need both keys and values.
+
+
+
+
+
+HashMap Program
+
+import java.util.HashMap;
+public class HashMapTest{
+
+public static void main(String[] args){
+
+HashMap<String, Integer> hs =new HashMap<>();
+
+hs.put("Ali",10);
+hs.put("abc",100);
+hs.put("dell",101);
+hs.put("aa", 102);
+
+System.out.println(hs);
+System.out.println(hs.get("abc"));
+
+System.out.println(hs.containsKey("Ali"));
+System.out.println(hs.containsValue(100));
+System.out.println(hs.size());
+System.out.println(hs.isEmpty());
+
+if(hs.containsKey("dell")){
+
+System.out.println(hs.get("dell"));
+System.out.println("condition run successfully");
+}
+
+if(hs.containsValue(10)){
+System.out.println(hs.get("Ali"));
+}
+
+int count = hs.getOrDefault("aaa", 5); // returns 0 if not found
+
+System.out.println(count);
+
+
+}
+
+}
+
+
+
+________________________________________________________________________________________
+
+
+
+eh rahe 🔥 Top HashMap-based Java questions jo aapko:
+
+✅ HashMap ke concepts ache se sikha denge (basic to advanced)
+
+✅ Interview me bhi directly ya indirectly kaam aayenge
+
+✅ DSA + Core Java dono ke concepts cover karte hain
+
+🔰 Basic Level (Concept Building)
+✅ Frequency count of characters in a string
+➤ "aabbc" → {a=2, b=2, c=1}
+
+✅ Count frequency of each word in a sentence
+➤ "This is this and that is that" → {this=2, is=2, and=1, that=2}
+
+✅ Find the first non-repeating character
+➤ "aabbcd" → c
+
+✅ Check if two strings are anagrams
+➤ "listen" and "silent" → true
+
+✅ Find the element that appears only once when all others appear twice
+➤ [1, 2, 3, 2, 1] → 3
+
+✅ Check if a string has all unique characters
+➤ "abc" → true
+➤ "aabc" → false
+
+🧠 Intermediate Level (Logic Building)
+🔁 Find the most frequent element in an array
+➤ [1, 3, 2, 1, 4, 1] → 1
+
+🔄 Group anagrams together
+➤ ["eat", "tea", "tan", "ate", "nat", "bat"] →
+[['eat', 'tea', 'ate'], ['tan', 'nat'], ['bat']]
+
+🔀 Two Sum using HashMap
+➤ Input: nums = [2,7,11,15], target = 9
+➤ Output: [0,1]
+
+🔁 Find common elements in two arrays
+➤ [1,2,3,4] and [3,4,5,6] → [3,4]
+
+📚 Find duplicate elements in an array
+➤ [1, 2, 2, 3, 4, 4] → [2, 4]
+
+🧮 Find number of subarrays with sum = k
+➤ arr = [1,2,3], k = 3 → subarrays → [1,2], [3]
+
+🔥 Advanced / Interview-Focused
+📊 Top K Frequent Elements
+➤ [1,1,1,2,2,3], k=2 → [1, 2]
+
+🧩 Longest Substring Without Repeating Characters
+➤ Input: "abcabcbb" → Output: 3 ("abc")
+
+🔄 Subarray Sum Equals K (Prefix Sum + HashMap)
+➤ Leetcode Hard pattern with HashMap<Integer, Integer>
+
+📈 Longest Consecutive Sequence
+➤ Input: [100, 4, 200, 1, 3, 2] → Output: 4 (Sequence: 1,2,3,4)
+
+🚦 LRU Cache Implementation (LinkedHashMap usage)
+➤ Java LinkedHashMap for caching recently used items
+
+
+
+
+
+

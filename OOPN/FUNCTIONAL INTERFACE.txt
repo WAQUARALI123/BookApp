@@ -1,0 +1,65 @@
+                                    FUNCTIONAL INTERFACE
+
+A Functional Interface in Java is an interface that contains only one abstract method.
+It can have multiple default or static methods, but only one abstract method is allowed. Functional interfaces are primarily used in lambda expressions and method references in Java.  
+
+
+Key Points:
+
+Introduced in Java 8.
+Contains only one abstract method.
+Can have multiple default and static methods.
+Used extensively in lambda expressions.
+Annotated with @FunctionalInterface (optional but recommended).
+
+
+Why Use Functional Interfaces?
+
+Enables the use of lambda expressions.
+Improves code readability and conciseness.
+Helps in functional programming style in Java.
+Reduces boilerplate code.
+
+
+
+
+✅ What is Method Reference in Java?
+Method reference means referring to a method directly by its name instead of writing a full lambda expression.
+
+🔹 Why Do We Use It?
+To make code shorter and easier to read when we are calling an existing method.
+
+📌 Example (Simple One):
+
+1.Without Method Reference (Lambda):
+
+List<String> names = List.of("Amit", "Ravi", "Neha");
+
+names.forEach(name -> System.out.println(name));  // lambda
+
+
+2.With Method Reference:
+
+List<String> names = List.of("Amit", "Ravi", "Neha");
+
+names.forEach(System.out::println);  // method reference ✅
+Both are same, but second one is shorter and cleaner.
+
+
+
+🔸 Real-Life Analogy
+
+जैसे हम एक काम करने के लिए किसी को सीधे बोलते हैं:
+"Mohan, chai bana do" — हम पूरा नहीं बताते कैसे बनानी है।
+
+वैसे ही, method reference में हम सिर्फ method का नाम बता देते हैं:
+
+"System.out::println" मतलब — "इस method को call कर दो"।
+
+✅ Why Use Method Reference?
+Code becomes short and clean
+
+No need to write extra code when method already exists
+
+Easy to read and understand
+

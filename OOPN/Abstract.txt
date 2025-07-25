@@ -1,0 +1,113 @@
+                                   Abstract 
+
+what is abstract 
+abstract is a keyword in java is used to difine abstract class and abstract method.
+
+
+Q1.Abstract is only applicable for class and method
+Note=not applicable for variable
+
+Q2.what is the mean of abstract
+abstract mean incomplete 
+
+Q3.what is abstract method and why we define
+  An abstract method is a method that is declared in an abstract class. if we don't no the implementation so we can 
+  define abstract method
+  
+
+Note="An abstract method is used only for declaration, not for implementation."
+
+Q4.who is the responsible to provide implementation
+   child class is responsible for implementation
+
+Abstract method id only for declaration but not for  implementation. "The child class is responsible for providing the implementation."
+
+
+Syntax of abstract method =public abstract void demo();
+
+
+for example
+
+
+public abstract class Vehicle {
+
+    // Abstract method (no implementation) //we don't now the which kind of wheels two willer four willer
+     public abstract int getNoOfWheels();   //this case we can use abstract method                                       
+}
+
+one more example
+
+public abstract class Fruit{
+
+
+public abstract String getTest(); // we don't now which type of food mango,apple in this case
+                                  //we declare abstract method without knowledge of implementation
+}
+
+Like Programming example
+
+
+public abstract class Loan{
+
+public abstract double getIntrestRate(); //we don't now which type of personal loan gold loan home loan
+                                       // different intrest rate PL 15% gold L 10% Home L 8% 
+                                      //we dont't now the implemanttion we can declare abstract   
+                                       //getIntrestRate method 
+}
+
+which abstract method is valid or not
+
+1.public abstract void m1(){ //not valid because abstract method does not body
+}
+2.public void m1(); //did not provide implementation creating error
+3.public abstract void m1(); //it is valid
+4.public void m1(){// It is valid
+}
+
+What is abstract class
+abstract class is partially implemented class 
+
+abstract class is not possible to create object and  partially implemented class is called abstract class
+
+Note= If a class contains at least one abstract method then compulsory that class should be declared as abstract
+
+Note: If a class contains at least one abstract method, it is mandatory to declare the class as abstract.
+
+Note= abstract class can contain zero no of abstract method
+
+Abstract class does dot contain any abstract method happly we can define class as abstract.abstract class can contain zero no of abstract method
+
+
+Abstract class Vs Abstract method
+
+"Note: In an abstract class, every abstract method must be implemented in the child class (subclass); otherwise, a compile-time error will occur."
+                                 
+                                OR
+
+"An abstract class requires all its abstract methods to be implemented in the child class (subclass); otherwise, a compile-time error will occur."
+
+
+Q. we don't want to all abstract method providing implementation in child class how we can do.
+Ans= we can declare child class as abstract then not compulsory  all abstract method providing implementation in child class 
+                                          OR
+
+Q: What if we don't want to implement all abstract methods in the child class?
+A: We can declare the child class as abstract. In that case, it is not compulsory to implement all abstract methods in the child class.
+
+
+Q:   Who is responsible for implementing the remaining abstract methods?
+Ans: The next-level child class (e.g., a sub-sub child class) is responsible.
+
+Q. what is the use of declaring abstract method in parents class  
+A= If i am not declare abstract method in the parent class. but child class may provide or may not be provide
+   implementation. if we declare  abstract method in parent class. then we mandatory to provide implementation 
+   in child class. 
+ 
+Q: What is the use of declaring an abstract method in the parent class?
+A: If we do not declare an abstract method in the parent class, the child class may or may not provide an  
+   implementation. However, if we declare it as abstract, then it becomes mandatory for the child class to provide an   
+   implementation.
+
+For Example= if we define vehicle class and declare abstract method getnoOfWeels() so child class mandatory  provide an implementation not skip.
+
+Note= also for use polymorphism 

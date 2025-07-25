@@ -1,0 +1,217 @@
+                                            OVERLOADING 
+
+
+when two methods having same name but different argument types
+
+Two method name must be same
+method must be in the same class
+method number of argument must be different 
+
+number of argument must be different 
+sequence of argument must be different 
+types of argument must be different 
+
+Note: When two methods have the same name but different argument types, it is called method overloading. It is also known as compile-time polymorphism, static polymorphism, or early binding polymorphism, and it is handled by the compile
+
+
+method overloading is also known compile time polymorphism or static polymorphism or early binding polymorphism
+
+example
+
+class Test{
+
+public void m1(){
+System.out.println("no argument method");
+}
+
+public void m1(int 1){
+System.out.println("int argument method");
+}
+
+public void m1(double d){
+System.out.println("double argument method");
+}
+
+public static void main(String[] args){
+
+Test t =new Test();
+
+t.m1();//
+t.m1(10);
+t.m1(20.2);
+}
+}
+
+Note= Test t =new Test();  // t is what type? = Test type  // it is a runtime object  new Test();
+ 
+Q. runtime object is what type 
+A= Test type 
+
+in overloading method resolution always takes care by compiler based on reference type not based on runtime   
+  
+
+✅ "In method overloading, method resolution is always handled by the compiler based on the reference type,  
+     not at runtime."
+
+
+method resolution mean which method has to execute that process is called method resolution  
+
+
+
+Automatic promotion in method overloading 
+
+CASE:1
+
+Type promotion in method overloading means that if there is no exact match for a method’s parameter, Java automatically converts a smaller data type into a larger one. This concept is known as automatic type promotion. 
+
+Automatic promotion chart
+
+(byte convert to short) (short convert to int) (char convert to int)  (int convert to long) 
+(long convert to float) (float convert to double)   
+
+
+    byte--->sort--_            
+                   -->int--->long--->float--->double
+          char-----
+
+CASE:2
+
+example  
+public class Test1{
+
+public void m1(Object o){
+
+System.out.println("Object method");
+}
+public void m1(String s){
+
+System.out.println("String method");
+}
+
+public static void main(String[] args){
+
+Test1 t1=new Test1();
+
+t1.m1(new Object());
+t1.m1("abc");
+t1.m1(null); // In overloading exact match method will get highest priority 
+t1.m1(10); //
+}
+} 
+
+
+Note In overloading exact match method will get highest priority 
+
+Q in overloading parent argument and child argument both match the argument  which argument will get  
+   highest priority 
+A. child argument 
+
+Q in overloading parent argument and child argument which argument will get highest priority 
+A child argument will get highest priority as compare parent argument
+
+Q. in overloading child argument not exact match argument what will happen
+A.= pass parent argument
+
+Q. In method overloading, if the argument is a child class and does not exactly match any method   
+    parameter, what will happen?
+A. If a method with an exact match for the child class argument is not found, Java will look for the   
+   closest matching superclass method in the overloaded methods. If a suitable parent class parameter is 
+   available, Java will promote the child object to the parent type and call that method. Otherwise, it 
+   will result in a compilation error.
+
+
+CASE:3
+
+public class Test2{
+
+public void m(String s){
+
+System.out.println("string method");
+}
+
+public void m(StringBuffer sb){
+
+System.out.println("StringBuffer method");
+}
+
+public static void main(String[] args){
+
+Test2 t1=new Test2();
+
+t1.m1("abc");
+t1.m1(new StringBuffer("aaa"));
+t1.m1(null); // in this case compilation error compiler will confuse like ambiguous error
+}
+}
+
+Q. why ambiguous error comes tell
+A= Java checks which method to call based on the argument type.
+   null can match both String and StringBuffer because both are reference types.
+   Java tires to find the best match, but:
+
+   String is not a subclass of StringBuffer.
+   StringBuffer is not a subclass of String.
+
+   Java cannot decide which method to call.
+
+   Because of this confusion, Java gives a compilation error (ambiguous method call).
+
+ CASE:4
+
+public class Test3{
+
+public void m(int i){
+
+System.out.println("general method");
+}
+
+public void m(int... i){
+
+System.out.println("Var-arg method");
+}
+
+public static void main(String[] args){
+
+Test3 t=new Test3();
+
+t.m();   // Var-arg method    //Var- arg method 0 no also     
+t.m(10,20); // Var-arg method
+t.m(30);   // general method // but in this case var arg method only single no; 
+}                            // general method concept is old and varagr method concept is new 
+}                           // java always prefer old concept  
+
+
+CASE:5
+
+Exact match method always going to get high priority   
+
+public class Test4{
+
+public void m(int i, float f){
+System.out.println("int, float method");
+}
+public void m(float f, int i){
+System.out.println("float f , int i");
+}
+public static void main(String[] args){
+
+Test4 t=new Test4();
+
+t.m(10,10.f);
+t.m(10.f, 10);
+//t.m(10,10); // ambiguous problem compiler will confuse 
+}
+}
+
+
+Note=The ambiguity occurs because both m(int, float) and m(float, int) require one type promotion, and 
+     Java cannot decide which one to prefer. 
+
+CASE:6
+
+
+1️⃣ Method overloading works independently of the throws clause.
+2️⃣ Unchecked exceptions (ArithmeticException) do not require handling.
+3️⃣ Checked exceptions (ClassNotFoundException) must be handled using try-catch or throws.
+
+

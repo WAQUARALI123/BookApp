@@ -1,0 +1,766 @@
+                                             OVERLOADING 
+
+
+when two methods having same name but different argument types
+
+Two method name must be same
+method must be in the same class
+method number of argument must be different 
+
+number of argument must be different 
+sequence of argument must be different 
+types of argument must be different 
+
+Note: When two methods have the same name but different argument types, it is called method overloading. It is also known as compile-time polymorphism, static polymorphism, or early binding polymorphism, and it is handled by the compile
+
+
+method overloading is also known compile time polymorphism or static polymorphism or early binding polymorphism
+
+example
+
+class Test{
+
+public void m1(){
+System.out.println("no argument method");
+}
+
+public void m1(int 1){
+System.out.println("int argument method");
+}
+
+public void m1(double d){
+System.out.println("double argument method");
+}
+
+public static void main(String[] args){
+
+Test t =new Test();
+
+t.m1();//
+t.m1(10);
+t.m1(20.2);
+}
+}
+
+Note= Test t =new Test();  // t is what type? = Test type  // it is a runtime object  new Test();
+ 
+Q. runtime object is what type 
+A= Test type 
+
+in overloading method resolution always takes care by compiler based on reference type not based on runtime   
+  
+
+✅ "In method overloading, method resolution is always handled by the compiler based on the 
+     reference type, not at runtime."
+
+
+method resolution mean which method has to execute that process is called method resolution  
+
+
+
+Automatic promotion in method overloading 
+
+CASE:1
+
+Type promotion in method overloading means that if there is no exact match for a method’s parameter, Java automatically converts a smaller data type into a larger one. This concept is known as automatic type promotion. 
+
+Automatic promotion chart
+
+(byte convert to short) (short convert to int) (char convert to int)  (int convert to long) 
+(long convert to float) (float convert to double)   
+
+
+    byte--->sort--_            
+                   -->int--->long--->float--->double
+          char-----
+
+CASE:2
+
+example  
+public class Test1{
+
+public void m1(Object o){
+
+System.out.println("Object method");
+}
+public void m1(String s){
+
+System.out.println("String method");
+}
+
+public static void main(String[] args){
+
+Test1 t1=new Test1();
+
+t1.m1(new Object());
+t1.m1("abc");
+t1.m1(null); // In overloading exact match method will get highest priority 
+t1.m1(10); //
+}
+} 
+
+
+Note In overloading exact match method will get highest priority 
+
+Q in overloading parent argument and child argument both match the argument  which argument will 
+   get highest priority 
+A. child argument 
+
+Q in overloading parent argument and child argument which argument will get highest priority 
+A child argument will get highest priority as compare parent argument
+
+Q. in overloading child argument not exact match argument what will happen
+A.= pass parent argument
+
+Q. In method overloading, if the argument is a child class and does not exactly match any method   
+    parameter, what will happen?
+A. If a method with an exact match for the child class argument is not found, Java will look for 
+   the closest matching superclass method in the overloaded methods. If a suitable parent class 
+   parameter is available, Java will promote the child object to the parent type and call that 
+   method. Otherwise, it 
+   will result in a compilation error.
+
+
+CASE:3
+
+public class Test2{
+
+public void m(String s){
+
+System.out.println("string method");
+}
+
+public void m(StringBuffer sb){
+
+System.out.println("StringBuffer method");
+}
+
+public static void main(String[] args){
+
+Test2 t1=new Test2();
+
+t1.m1("abc");
+t1.m1(new StringBuffer("aaa"));
+t1.m1(null); // in this case compilation error compiler will confuse like ambiguous error
+}
+}
+
+Q. why ambiguous error comes tell
+A= Java checks which method to call based on the argument type.
+   null can match both String and StringBuffer because both are reference types.
+   Java tires to find the best match, but:
+
+   String is not a subclass of StringBuffer.
+   StringBuffer is not a subclass of String.
+
+   Java cannot decide which method to call.
+
+   Because of this confusion, Java gives a compilation error (ambiguous method call).
+
+ CASE:4
+
+public class Test3{
+
+public void m(int i){
+
+System.out.println("general method");
+}
+
+public void m(int... i){
+
+System.out.println("Var-arg method");
+}
+
+public static void main(String[] args){
+
+Test3 t=new Test3();
+
+t.m();   // Var-arg method    //Var- arg method 0 no also     
+t.m(10,20); // Var-arg method
+t.m(30);   // general method // but in this case var arg method only single no; 
+}                            // general method concept is old and varagr method concept is new 
+}                           // java always prefer old concept  
+
+
+CASE:5
+
+Exact match method always going to get high priority   
+
+public class Test4{
+
+public void m(int i, float f){
+System.out.println("int, float method");
+}
+public void m(float f, int i){
+System.out.println("float f , int i");
+}
+public static void main(String[] args){
+
+Test4 t=new Test4();
+
+t.m(10,10.f);
+t.m(10.f, 10);
+//t.m(10,10); // ambiguous problem compiler will confuse 
+}
+}
+
+
+Note=The ambiguity occurs because both m(int, float) and m(float, int) require one type promotion, and 
+     Java cannot decide which one to prefer. 
+
+CASE:6
+
+
+1️⃣ Method overloading works independently of the throws clause.
+2️⃣ Unchecked exceptions (ArithmeticException) do not require handling.
+3️⃣ Checked exceptions (ClassNotFoundException) must be handled using try-catch or throws.
+
+
+
+
+
+
+____________________________________________________________________________________________________________
+ 
+                                                  OVERRIDING
+
+. Method name must be same
+.Method must be in a different class (inheritance required)
+. Method Number of argument must be same (like method signature)
+
+number of argument must be same 
+sequence of argument must be same 
+types of argument must be same
+
+
+Note= If the child class is not satisfied with parent class method implementation then the child class is allowed to redefined that method based on its requirement. now this process is called method overriding     
+                                or
+
+
+✅Note= If the child class is not satisfied with parent class method implementation that particular method child class is allowed to   
+       redefined that method based on its requirement. now this process is called method overriding   
+
+
+Note= Whatever method parents has by default available to the child through inheritance. IF the child class is 
+not satisfied with parent class method implementation that particular method child class is allowed to  
+redefine this concept is known as overriding
+
+ 
+ parent class method is overridden method 
+ child class method is overriding method
+
+
+JVM is always going to check runtime object 
+
+Note= In method overriding method resolution always takes care by JVM. based on runtime object. not based on   
+       reference   
+
+✅Note= In method overriding method resolution always handel by JVM. based on runtime object. not based on   
+             reference type   
+ 
+
+ 
+                                       // p is a reference type of parent 
+ 
+for Example=  Parent p = new Child();  // Child() is a runtime object AND // Child method will get the chance
+                                     // IN method overriding method resolution always takes care by JVM. based on   
+                                      runtime object. not based on reference   
+
+EXAMPLE
+
+
+class Parent{
+
+public void Money(){
+System.out.println("Property, Loan ,Home");
+}
+
+public void marry(){
+
+System.out.println("Parent Method:  aa,bb");
+}
+}
+
+class Child extends Parent{
+
+
+public void marry(){
+
+System.out.println("Child Method :  dd");
+}
+}
+
+public class MethodOverriding{
+
+public static void main(String[] args){
+
+Parent p =new Parent(); // which marry() method will get the chance, because runtime object is parent() parent    
+p.marry();              // method method will run;  
+
+
+Child c =new Child(); // which method will get chance and run. Child() method because JVM will check runtime  
+c.marry();    // object Child() is a runtime object jvm will check runtime object contain method yes call this  
+             // method
+
+Parent p1 = new Child(); // which method will get chance and run. Child() method because JVM will check  
+                         //runtime object // and also known as method overriding
+p1.marry();                        
+}
+}
+
+
+
+NOTE= JVM will Check Runtime object. and will get the chance of runtime object method;
+
+Q: Parent p = new Parent(); Which method will be called?
+A= parent method because JVM will Check Runtime object. and will get the chance of runtime object method;
+
+
+Q. Parent p1 = new Child();
+A= Child method JVM will Check Runtime object. and will get the chance of runtime object method;
+
+
+
+                     RULES OF METHOD OVERRIDING
+
+1. Method names must be same and argument type must be same. including order // mean method signature
+
+2. return type must be same in overriding but this rule is applicable until 1.4 version. from 1.5 version 
+   onward covariant return type is also allow.
+
+Q. In overriding different return type is allowed or not ?   
+A= before 1.5 version must have same return type. but after 1.5 version covariant return type.it is possible   
+   to have different return type in overriding. but child class method return should be sub of parent class
+   method return this concept is known as covariant return type 
+
+Q. what is covariant return type
+A= child class method return should be sub of parent class method return this concept is known as covariant   
+   return type 
+
+
+Q. parent class method return object and child class method return is String 
+A= true
+
+Q. parent class method return String and child class method return is object 
+A= this is not covariant return type false
+
+Q. parent class method return double and child class method return int. is it valid or not ?
+A= It is not valid 
+Note= covariant return type concept is only applicable for object type. but not for primitives   
+
+
+for Example for Covariant
+
+
+class Parent{
+
+public object m1(){
+
+return null;
+}
+}
+
+class Child extends Parent{
+
+public String m1(){
+return null;
+}
+}
+
+
+
+                    ⭐ MODIFIER IN OVERRIDING
+
+.Private method is not applicable for method overriding
+.final is not applicable for method overriding
+
+Note= Parent class method is non final and we can declare child class method is final. It is 
+       possible but next level child class in not possible 
+ 
+       non final to final is possible. but final to non final is not possible  
+
+Note= Parent class method is not abstract we can declare child class method is abstract. It is  
+     applicable 
+
+ Parent class method is abstract we can declare child class method is non abstract. It is  
+   applicable for method overriding
+
+Note= synchronized to non synchronized. and non synchronized to synchronized. It is possible in  
+     overriding native to non native. and non native to native. It is possible overriding 
+
+          Private<default<protected<public 
+
+Note = the rule of access modifier in overriding is : we can't reduce the scope of access 
+       modifier. but we can increase the scope of access modifier.  
+
+✅Note= child class Access modifier must be greater than or equal to the parent class access modifier 
+
+"The access modifier of a child class must be greater than or equal to the parent class access modifier."
+
+for example
+
+class Parent{
+
+protected void m1(){
+
+}
+}
+
+class Child extends Parent{
+
+public void m1(){
+
+// rules followed child class Access modifier must be greater than or equal to the parent class 
+    access modifier
+}
+}
+
+
+Note= if the parent class method is public, compulsory child class method is public. otherwise compile time error
+Note= if the parent class method is protected ,so compulsory we can declare in child class method is protected or public
+ 
+Note= if the parent class method is default, so we can declare in child class method is default  
+       protected public
+
+Note = If parent class method is private. in overriding private method is not applicable 
+
+
+
+                          ⭐ EXCEPTION HANDLING IN OVERRIDING 
+
+
+Note= If child class method throws any checked exception.compulsory parent class method should  
+     throws same checked exception or its parents. otherwise compile time error
+
+ unchecked Exception you can use any ware any time. 
+
+Case1 
+
+Parent: public void m();
+Child: public void m() throws Exception // Error
+
+
+child class method throws any checked exception. compulsory parent class method should throws same checked  
+      exception or its parents.
+
+Case2
+
+Parent: public void m() throws Exception 
+
+Child: public void m() throws IOException // run successfully  
+
+Case3 
+
+Parent: public void m() throws IOException 
+
+Child: public void m() throws Exception // Error  
+
+Case4 
+
+Parent: public void m() throws IOException 
+
+Child: public void m() throws EOFException, FNFE // run  IOException is parent of  EOFException, FNFE 
+
+Case5 
+
+Parent: public void m() throws IOException 
+
+Child: public void m() throws EOFException, NPE // run  //NPE unchecked Exception you can use any ware any time. 
+
+
+Case6 
+
+Parent: public void m() throws IOException 
+
+Child: public void m() throws AE, NPE // run  //AE NPE unchecked Exception you can use any ware any time. 
+                                              // not restriction for unchecked exception
+
+
+
+                                OVERRIDING IN STATIC
+
+static method to non static method overriding is not possible. and 
+
+non static method to static method overriding is possible.
+
+class Parent{
+
+public static void m1(){
+
+}
+}
+
+class Child extends Parent{
+
+public void m1(){  // it is not possible class level method is a static method. if you want to object level it is not
+                   //possible  
+}
+}
+
+
+
+
+.non static method to static method overriding is possible.
+
+class Parent{
+
+public  void m1(){
+
+}
+}
+
+class Child extends Parent{
+
+public static void m1(){  // it is not possible class level method is a static method. if you want to object level it   
+                         //is not possible  
+}
+}
+
+
+
+Q. If both methods are static what will happen ?
+A= It is valid. but It is not overriding. It is Method Hiding Concept  
+
+class Parent{
+
+public static void m1(){
+
+System.out.println("Parent Method");
+}
+}
+
+class Child extends Parent{
+
+public static void m1(){  
+
+System.out.println("Child Method");
+}
+}
+
+public class MHidingTest{
+
+public static void main(String[] args){
+
+
+Parent p =new Parent(); //Note If It is overriding method resolution always takes care by JVM based on runtime object
+                        // Parent(); is runtime object runtime method get chance
+p.m1();
+
+Child c = new Child(); // but It is Method hiding method resolution always takes care by compiler based on reference 
+                       // type. 
+                                           
+c.m1();  
+
+Parent p =new Child();  //parent method call 
+
+p.m1();
+}
+}
+
+
+
+Note= It is Method hiding method resolution always takes care by compiler based on reference 
+                       // type. 
+
+Q. Parent p =new Child()  what method will call in method hiding ?
+A= Parent class method will call. because Method hiding method resolution always takes care by compiler based on   
+         reference type.
+
+Note= If both parent and child class methods are static. It will become Method hiding.
+
+Note= If both parent and child class methods are non static. It will become Method overriding.
+
+Q. Difference between method Hiding and method overriding ?
+
+A= Method-Hiding
+
+1.Both parent class and child class method should be static 
+2.Method resolution always takes care by compiler based on reference type
+3.Method Hiding is  compile time polymorphism or static polymorphism or early binding
+
+A=Method Overriding
+
+1.Both parent class and child class method should be non static.
+2.Method resolution always takes care by compiler based on reference type
+3.method overriding is runtime polymorphism or dynamic polymorphism or late binding.
+
+
+
+                             Var-arg IN METHOD OVERRIDING
+
+
+class Parent{
+
+public void m1(int ...i){
+System.out.println("parent method");
+}
+}
+
+class Child extends Parent{
+
+public void m1(int i){
+System.out.println("Child method");
+}
+}
+
+// Note =it is method overloading not overriding. different parameter in overloading method resolution always
+   takes care by compiler based on reference type  
+
+public class VarArgoverriding{
+
+public static void main(String[] args){
+
+Parent p =new Parent(); // parent method call
+p.m1();
+
+Child c= new Child(); child method call
+
+c.m1(10);
+
+Parent p1 =new Child(); parent method call
+
+p1.m1();
+}
+}
+
+Note= var args method you can't override with normal method. if you are trying to override with normal method
+     it will become overloading not overriding.
+
+ 
+
+  but i want to overriding so you can declare child class method also var-args achieve overriding
+   
+
+
+class Parent{
+
+
+public void m1(int ...i){
+
+System.out.println("parent method");
+}
+}
+
+class Child extends Parent{
+
+public void m1(int ...i){
+
+System.out.println("Child method");
+}
+}
+
+public class VarArgoverriding{
+
+public static void main(String[] args){
+
+Parent p =new Parent();  //it is overriding method resolution always takes care by JVM based on Runtime Object  
+p.m1(); //parent method call
+
+Child c= new Child(); 
+c.m1(10);     // child method call
+
+Parent p1 =new Child();
+p1.m1();       // child method call
+}
+} 
+
+
+                                OVERRIDING WITH VARIABLE 
+
+.overriding with respect to variable
+
+Note= overriding concept applicable only for method. but not for variable 
+
+Q. how the variable resolution will be there ?
+A= variable resolution is always takes care by compiler. based on reference type //same rule instance or   
+    static variable.
+
+Example
+
+class Parent{
+
+String s="parent";
+}
+
+class Child extends Parent{
+
+String s="child";
+}
+
+public class VariableOverriding{
+
+public static void main(String[] args){
+
+Parent p =new Parent();
+
+System.out.println(p.s);
+
+Child c= new Child();
+System.out.println(c.s);
+
+Parent p1 =new Child();
+
+System.out.println(p1.s);
+}
+}
+
+
+                 DIFFERENCE BETWEEN Method OVERLOADING AND OVERRIDING
+
+
+Difference between method overloading and overriding
+
+.Overloading
+
+1️⃣ Method name must be the same.
+2️⃣ Argument type must be different (at least in number, type, or order).
+3️⃣ Private, final, and static methods can be overloaded.
+4️⃣ Return type does not play a role in method overloading; overloading requires a different parameter list.
+   Return type is no restriction in overloading 
+5️⃣ Throws clause has no restriction in method overloading.
+6️⃣ In overloading, method resolution is always handled by the compiler based on the reference type.
+7️⃣ Overloading is also known as compile-time polymorphism, static polymorphism, and early binding.
+
+
+
+.Overriding
+
+
+
+
+
+
+
+
+                                   POLYMORPHISM
+
+one name with multiple form is known as polymorphism
+
+methods having same name but different argument types
+
+Note= same method name we can use different type of argument (more flexibility)
+
+🚀 It makes the code more flexible and reusable
+
+There are Two types of polymorphism 
+
+1.compile time polymorphism 
+2.runtime polymorphism 
+
+
+🔹 Advantages of Polymorphism in Java
+
+
+
+1️⃣ Code Reusability 🛠️
+
+The same method name can be used for different purposes, reducing duplicate code.
+Example: A single add() method can handle both integers and doubles.
+
+
+2️⃣ Flexibility & Maintainability 🔄
+
+Polymorphism allows modifications in code without affecting existing functionality.
+Example: If a new subclass is added, the existing code does not need major changes.
+
+✔ Improves readability and maintainability.  

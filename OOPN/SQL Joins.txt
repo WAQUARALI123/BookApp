@@ -1,0 +1,250 @@
+                               SQL Joins
+
+Q. what is sql joins
+A= SQL JOINs are used to combine data from two or more tables based on a common column. They  
+   help fetch related information stored in different tables.
+
+
+Note=  Column names do not need to be the same.
+       Column data types and values should be the same
+
+🔹Types of SQL JOINs:
+
+1.INNER JOIN 
+2.LEFT JOIN (LEFT OUTER JOIN)
+3.RIGHT JOIN (RIGHT OUTER JOIN):
+4.FULL JOIN (FULL OUTER JOIN): 
+
+
+1.INNER JOIN :Returns only the matching rows from both tables. based on the join condition.
+
+. SYNTAX 
+
+SELECT COLUMN_name
+FROM TableA
+INNER JOIN TableB
+ON TableA.column_name= TableB.column_name
+
+For Example customer and payment Table
+
+select *
+from customer AS c       // AS mean Alyes 
+INNER JOIN payment AS p  //
+on c.customer_id =p.customer_id;
+
+
+2.LEFT JOIN: Returns All records from the left table and the matched records from the right table.
+              If there is no match in the right table, NULL values are returned for the right table's  
+              columns.  
+
+Left Join SYNTAX 
+
+select column_name
+from TableA 
+LEFT JOIN TableB
+on TableA.column_name= TableB.columnB    
+
+NOTE: left side left table ex(TableA) and right side right Table ec(TableB)
+
+For Example customer and payment Table
+
+
+select *
+from customer AS c
+Left Join payment AS p
+on c.customer_id= p.customer_id;
+
+
+3.RIGHT JOIN: Returns All records from the right table and the matched records from the left table.
+              If there is no match in the left table, NULL values are returned for the left table's  
+              columns.
+
+SYNTAX
+
+select *
+from TableA 
+Right Join TableB
+TableA.column_name=TableB.column_name
+
+For Example customer and payment Table
+
+select *
+from customer AS c
+Right Join payment AS p
+c.customer_id= p.customer_id;
+
+
+4.FULL JOIN (FULL OUTER JOIN): Returns All records from both tables when there is a match in either table. If there is no match, NULL  
+                              values are returned for columns from the table
+
+select column_name
+
+from TableA 
+Left join TableB
+TableA.column_name=TableB.couumn_name; 
+
+
+
+4. FULL JOIN (FULL OUTER JOIN):
+Returns all records from both tables — the matched records, as well as the unmatched records from both sides.
+
+If there is no match in the left table, NULL values are returned for the left table’s columns.
+
+If there is no match in the right table, NULL values are returned for the right table’s columns.
+
+
+
+
+
+✅ Why we write ON in SQL JOINs?
+We write the ON keyword to tell how the two tables are related — i.e., which column should be used to match rows from both tables.
+
+“Match rows where the employee’s id in TableA is the same as the emp_id in TableB.”
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Great! Here's a complete roadmap to learn SQL from beginner to advanced level, step by step:
+
+🔰 Beginner Level (Basics)
+Start here if you're new to SQL:
+
+1.Introduction to SQL – What is SQL, databases, RDBMS
+
+2.Data Types – INT, VARCHAR, DATE, BOOLEAN, etc.
+
+3.Basic SQL Commands
+
+CREATE TABLE
+
+INSERT INTO
+
+SELECT
+
+UPDATE
+
+DELETE
+
+WHERE Clause
+
+ORDER BY (ASC, DESC)
+
+LIMIT / TOP
+
+DISTINCT
+
+⚙️ Intermediate Level
+Once you know the basics, move to:
+
+Functions
+
+Aggregate: COUNT, SUM, AVG, MIN, MAX
+
+String: UPPER, LOWER, CONCAT, SUBSTRING
+
+Date: NOW(), DATEDIFF(), DATE_FORMAT()
+
+GROUP BY & HAVING
+
+JOINS
+
+INNER JOIN
+
+LEFT JOIN
+
+RIGHT JOIN
+
+FULL OUTER JOIN
+
+UNION and UNION ALL
+
+IN, NOT IN, BETWEEN, LIKE
+
+ALIAS (AS)
+
+NULL handling (IS NULL, IS NOT NULL)
+
+🧠 Advanced Level
+Subqueries
+
+In WHERE, FROM, and SELECT clauses
+
+Window Functions
+
+ROW_NUMBER(), RANK(), DENSE_RANK(), LEAD(), LAG()
+
+CTEs (Common Table Expressions) – WITH
+
+Views
+
+Stored Procedures & Functions
+
+Triggers
+
+Indexes
+
+Normalization
+
+Transactions
+
+BEGIN, COMMIT, ROLLBACK
+
+Constraints
+
+PRIMARY KEY, FOREIGN KEY, UNIQUE, CHECK, DEFAULT
+
+Performance Tuning
+
+Explain Plans, Index Usage, Optimization
+
+
+
+
+

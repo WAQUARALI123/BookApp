@@ -1,0 +1,36 @@
+  Abstraction 
+
+Abstraction mean hiding the implementation and showing essential feature is known as abstraction
+
+what is the advantages of abstraction 
+security
+
+✅ Achieved via:
+
+Abstract Classes (abstract keyword)
+Interfaces (interface keyword)
+
+Advantages of Abstraction:
+✅ Hides unnecessary details, showing only relevant functionalities.
+✅ Hides unnecessary details, and showing only main functionalities.
+✅ Improves security by preventing direct access to implementation.
+✅ Enhances code reusability and modularity.
+
+what is modularity ?
+
+✅ Modularity means dividing a program into independent, smaller parts (modules), where each module handles a specific functionality.
+
+OR
+Modularity is breaking a big program into smaller, independent parts (modules), each handling a specific function. This makes the program easy to manage, reusable, and scalable." 🚀
+
+for Example = in the car case all the necessary feature are showing like steering gear, acceletor but  
+             unnecessary things are not showing like engine and internal working this concept is known            
+             abstraction  
+
+"For example, in the case of a car, all the necessary features such as the steering wheel, gear, and accelerator are visible to the user. However, unnecessary details like the engine and internal mechanisms are hidden. This concept is known as abstraction."
+
+for example =ATMs (Automated Teller Machines) – Users interact with buttons and screens to withdraw  
+             money, but the internal process of verifying 
+            credentials, updating the bank database, and processing transactions is hidden.
+
+

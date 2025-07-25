@@ -1,0 +1,537 @@
+
+What is ORDER BY in SQL?
+ORDER BY is used to sort the result set of a SQL query by one or more columns.
+
+🔹 Basic Syntax:
+
+SELECT column1, column2
+FROM table_name
+ORDER BY column1 [ASC|DESC];
+
+ Types of Sorting with ORDER BY:
+
+Type              Keyword         Description
+	        	     
+Ascending	  ASC	          Default. Sorts from lowest to highest (A–Z for text, 0–9 for numbers)
+Descending	  DESC	          Sorts from highest to lowest (Z–A for text, 9–0 for numbers)
+
+
+🔸 Examples:
+
+1.Order by one column (ascending)
+
+SELECT * 
+FROM employees
+ORDER BY salary;
+
+
+2.Order by one column (descending)
+
+SELECT * FROM employees
+ORDER BY salary DESC;
+
+3.Order by multiple columns
+
+SELECT * FROM employees
+ORDER BY department ASC, salary DESC;
+
+
+SELECT name, salary FROM employees
+ORDER BY 2 DESC; 
+
+
+_________________________________________________________________________________
+
+🔹 Step 1: What is LIMIT?
+LIMIT is used to control how many rows are returned from a SQL query.
+
+🔹 Step 2: Why use it?
+You use LIMIT when:
+
+we only want a few rows, not the whole table.
+
+You want to test or preview data.
+
+You want the top results (like top 3 salaries).
+
+🔹 Step 3: Basic Syntax
+
+
+select column_name
+from Table_name
+ Limit 3;
+
+
+select salary
+from employee
+limit 1;
+
+SELECT * FROM employee
+LIMIT 5;
+
+
+
+✅ This returns the employee with the highest salary.
+
+select name,salary
+from employee
+Order By salary DESC
+Limit 1;
+
+
+Return Top 3 highest salary with employee table
+
+select name, salary
+from employee
+Order By salary DESC
+Limit 3;
+
+return first three lowest salary from employee table 
+
+select name,salary
+from employee
+Order By salary ASC 
+limit 3;
+
+_________________________________________________________________________________________
+
+ What is WHERE?
+The WHERE clause is used to filter rows based on a condition.
+
+The where clause is used to filter rows based  on a condition 
+
+1.Syntax of where clause
+
+select column1,column2
+from Table_name
+where condition
+
+🔹 2. Basic Examples
+
+Get employees with salary more than 50000:
+
+select name,salary
+from employee 
+where salary > 50000;
+
+Get employees with salary less than 50000:
+
+select name,salary
+from employee
+where salary < 50000;
+
+➤ Get employee with exact name:
+
+select name
+from employee
+where name='john';  // return all row where name is same
+
+🔹 3. Using Logical Operators
+➤ AND – Multiple conditions must be true:
+
+select *
+from employee
+where department='IT', AND salary >60000;
+
+return employee IT department and salary greater than 60000
+
+➤  OR – At least one condition must be true:
+
+select *
+from employee
+where department = 'IT' OR department = 'HR';
+
+➤ NOT – Exclude a condition:
+
+select *
+from employee 
+where Not department = 'finance';
+
+ 
+🔹 4. Using IN, BETWEEN, LIKE
+
+ IN – Match multiple values:
+ return all It, or HR value
+
+select *
+from employee
+where department IN ('It', 'HR');
+
+➤ BETWEEN – Range check:
+
+select * 
+from employee
+where salary Between 50000 and 80000;
+
+➤ LIKE – Pattern matching:
+
+select *
+from employee
+where name like 'A%'; -- names start with A
+
+
+select *
+from employee
+where name like '%A';
+   
+_____________________________________________________________________________
+
+🔹What is DISTINCT in SQL?
+
+  DISTINCT is used to remove duplicate values from the result of a SQL query.
+
+Simple Meaning:
+If a column has repeated values, DISTINCT will return only unique (non-duplicate) values.
+
+Syntax :
+
+select DISTINCT column_name
+from Table_Name;
+
+Example :
+
+select DISTINCT Department
+from employee;
+
+Summary:
+DISTINCT = removes duplicates
+
+Works on one or more columns
+
+Often used to find unique values
+
+____________________________________________________________________________
+
+COUNT(*) in SQL means:
+Count all rows, including rows with NULL values, in the result set.
+
+syntax: 
+
+SELECT COUNT(*) FROM employees;  
+
+____________________________________________________________________________________________________________________________
+
+
+what is group by in sql
+
+What is GROUP BY in SQL?
+GROUP BY is used to group rows that have the same values in one or more columns, and then apply aggregate functions on them like:
+
+COUNT()
+
+SUM()
+
+AVG()
+
+MAX()
+
+MIN()The GROUP BY clause in SQL is used to group rows that have the same value in a column. It is often used with functions like COUNT(), SUM(), or AVG() to get totals or averages
+
+
+🔄 Common Aggregate Functions with GROUP BY
+Function	Description
+COUNT()	Count number of rows
+SUM()	Add numeric values
+AVG()	Average of values
+MAX()	Highest value
+MIN()	Lowest value
+
+🔹 Basic Syntax:
+
+
+SELECT column_name, AGGREGATE_FUNCTION(column_name)
+FROM table_name
+GROUP BY column_name;
+
+
+
+🔹Count Employees in Each Department
+
+select Department, count(*) AS Total_Employee
+from employee
+Group By Department;
+
+
+Group by department and count employees, showing names individually:
+
+SELECT 
+
+  department,
+  GROUP_CONCAT(name) AS employee_names,
+  COUNT(*) AS total_employees
+FROM employee
+GROUP BY department;
+
+🔹 Example 2: Total Salary by Department
+
+select Department, SUM(salary) AS Total_salary
+from employee
+Group By Department;
+
+
+
+Advanced Concepts
+
+1. GROUP BY Multiple Columns
+
+
+select Department,gender, count(*)
+from employee
+group by department ,gender;
+
+
+ Multiple Columns in GROUP BY
+
+Task: Count employees by department and job_title
+
+select department, job_title ,count(*) AS Total
+from employee 
+group by department, job_title;
+
+
+2. GROUP BY with WHERE and HAVING
+
+WHERE filters before grouping
+
+HAVING filters after grouping
+
+SELECT department, COUNT(*) AS total
+FROM employees
+WHERE salary > 5000
+GROUP BY department
+HAVING COUNT(*) > 1;
+
+4. ORDER BY with GROUP BY
+
+SELECT department, COUNT(*) AS total
+FROM employees
+GROUP BY department
+ORDER BY total DESC;
+
+
+What is Having 
+
+In SQL, the HAVING clause is used to filter groups of rows after aggregation (like GROUP BY), similar to how WHERE filters individual rows before aggregation.
+
+
+
+Practice Questions
+Get number of employees in each department.
+
+Find average salary by department.
+
+Get top 3 departments by number of employees.
+
+Count how many employees joined in each year.
+
+Find departments where total salary > 1,00,000.
+
+
+
+-----------------------------------------------------------------------------------------------
+
+
+✅ Top 15 GROUP BY Interview Questions (with tips)
+🟢 Basic Level
+What is the purpose of GROUP BY in SQL?
+
+✅ Tip: Say it’s used to group rows with same values and apply aggregate functions like COUNT(), SUM(), etc.
+
+What is the difference between WHERE and HAVING?
+
+✅ WHERE filters rows before grouping
+
+✅ HAVING filters groups after aggregation
+
+Can you use GROUP BY without an aggregate function?
+
+✅ Yes, technically allowed, but practically it's used with aggregates.
+
+Why does SQL give an error if a non-aggregated column is not in GROUP BY?
+
+✅ Because SQL doesn't know which value to pick from grouped rows
+
+Write a query to count employees in each department.
+
+sql
+Copy
+Edit
+SELECT department, COUNT(*) FROM employee GROUP BY department;
+🟡 Intermediate Level
+How is GROUP BY different from DISTINCT?
+
+✅ DISTINCT removes duplicate rows
+
+✅ GROUP BY groups and allows aggregate functions
+
+How to filter groups using HAVING clause?
+
+Example: Departments with more than 5 employees
+
+sql
+Copy
+Edit
+SELECT department, COUNT(*) FROM employee
+GROUP BY department
+HAVING COUNT(*) > 5;
+Can you use GROUP BY with multiple columns?
+
+✅ Yes! Example:
+
+sql
+Copy
+Edit
+SELECT department, job_title, COUNT(*)
+FROM employee
+GROUP BY department, job_title;
+What happens when a column has NULL values in GROUP BY?
+
+✅ NULLs are grouped together as one group
+
+What is the order of execution of a query with GROUP BY?
+
+pgsql
+Copy
+Edit
+FROM → WHERE → GROUP BY → HAVING → SELECT → ORDER BY
+🔴 Advanced Level
+How to get top 1 salary per department?
+
+Using ROW_NUMBER() or correlated subquery:
+
+sql
+Copy
+Edit
+SELECT * FROM (
+  SELECT *, ROW_NUMBER() OVER (PARTITION BY department ORDER BY salary DESC) AS rn
+  FROM employee
+) AS emp
+WHERE rn = 1;
+How to find departments where average salary > 50000?
+
+sql
+Copy
+Edit
+SELECT department, AVG(salary)
+FROM employee
+GROUP BY department
+HAVING AVG(salary) > 50000;
+Difference between GROUP BY and PARTITION BY?
+
+✅ GROUP BY aggregates rows into single result per group
+
+✅ PARTITION BY is used in window functions — it keeps all rows but applies function per group
+
+Can you use GROUP BY on expressions?
+
+✅ Yes:
+
+SELECT YEAR(join_date), COUNT(*) 
+FROM employee
+GROUP BY YEAR(join_date);
+
+Write a query to find duplicate email addresses.
+
+
+SELECT email, COUNT(*) 
+FROM employee
+GROUP BY email
+HAVING COUNT(*) > 1;
+
+INTERSECT = Common data from both queries
+--------------------------------------------------------------------------------------------------------------------------
+
+
+✅ TOP GROUP BY Queries (Most Asked in Interviews)
+1️⃣ Count of Employees per Department
+sql
+Copy
+Edit
+SELECT department, COUNT(*) AS total_employees
+FROM employee
+GROUP BY department;
+🧠 Counts how many employees are in each department
+
+2️⃣ Average Salary per Department
+sql
+Copy
+Edit
+SELECT department, AVG(salary) AS avg_salary
+FROM employee
+GROUP BY department;
+🧠 Calculates average salary of each department
+
+3️⃣ Departments with More Than 3 Employees (Using HAVING)
+sql
+Copy
+Edit
+SELECT department, COUNT(*) AS total
+FROM employee
+GROUP BY department
+HAVING COUNT(*) > 3;
+🧠 Filters only those departments where employee count > 3
+
+4️⃣ Total Salary Paid per Job Title
+sql
+Copy
+Edit
+SELECT job_title, SUM(salary) AS total_salary
+FROM employee
+GROUP BY job_title;
+🧠 Find total salary cost for each job role
+
+5️⃣ Find Duplicate Email IDs
+sql
+Copy
+Edit
+SELECT email, COUNT(*) AS total
+FROM employee
+GROUP BY email
+HAVING COUNT(*) > 1;
+🧠 Detects duplicate email addresses in a table
+
+6️⃣ Count of Employees by Department and Job Title
+sql
+Copy
+Edit
+SELECT department, job_title, COUNT(*) AS total
+FROM employee
+GROUP BY department, job_title;
+🧠 Multi-level grouping (like pivot table)
+
+7️⃣ Employees Joined Per Year
+sql
+Copy
+Edit
+SELECT YEAR(join_date) AS year, COUNT(*) AS total_joined
+FROM employee
+GROUP BY YEAR(join_date);
+🧠 Grouping by expression (date function)
+
+8️⃣ Department-wise Max Salary
+sql
+Copy
+Edit
+SELECT department, MAX(salary) AS max_salary
+FROM employee
+GROUP BY department;
+🧠 Highest salary in each department
+
+9️⃣ Minimum Salary by Job Title
+sql
+Copy
+Edit
+SELECT job_title, MIN(salary) AS min_salary
+FROM employee
+GROUP BY job_title;
+🔟 List Departments Where Avg Salary > 50,000
+sql
+Copy
+Edit
+SELECT department, AVG(salary) AS avg_salary
+FROM employee
+GROUP BY department
+HAVING AVG(salary) > 50000;
+
+
+

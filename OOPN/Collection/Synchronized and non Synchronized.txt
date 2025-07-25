@@ -1,0 +1,27 @@
+                         Synchronized and non Synchronized
+
+1.what is Synchronize
+
+A=Only one thread can access a specific block of code or method at a time is called synchronized.
+
+2.what is not Synchronize
+
+A=Multiple threads can access and modify the same data or execute the same block of code at the same time    
+   is called not synchronized.
+
+
+ "If multiple threads can access a specific block of code simultaneously, it means the code is not synchronized."
+
+
+
+Q2.what is Thread
+
+A= A thread is the smallest independent unit of execution inside a program.
+
+A= A thread is a small independent part of execution inside a program 
+              
+                               OR
+A= Thread is a small independent part of our program 
+
+
+multiple thread can access a specific block of code at a time is called not synchronization 

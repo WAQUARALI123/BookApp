@@ -1,0 +1,1820 @@
+                                              OOP
+
+* java source file structure
+
+Q1 how many class can contain java program 
+ANs= many class can contain java program
+
+Q2.how many public class can contain java program
+Ans= only one public class 
+
+Note=more than one public class compile time error must one public class 
+Note=public class name must be same as dot .java file 
+
+Note= ex without public class  A Class, B Class C Class we can save any name of class and    
+      also we can save other name save Dell the program will compile  
+
+Q3 java program have four class A Class, B Class C Class , D Class how many dot .class file generate ?
+Ans= Every class generate dot .class file  
+
+Q3 java program have four class A Class, B Class C Class , D Class how many dot .java file generate ?
+A= only one .java file generate 
+A= only public class generate .java file. and otherwise save class
+
+Q4. who generate .class file in java
+Ans= javac generate .class file (java compiler generate .class file)
+  
+Note=The javac (Java Compiler) compiles the .java file into bytecode and generates a corresponding .class file.
+
+Q5. who execute .class file
+Ans= JVM execute .class file and reads the bytecode
+
+Note= ✅ .class file is a container that stores bytecode.
+      ✅ Bytecode is the actual set of JVM instructions inside the .class file.
+
+
+what is import statement
+
+The import statement in Java is used to bring predefined or user-defined classes and packages into a Java program. It allows you to use classes from other packages without writing their full package names every time.
+
+Advantages of import statement
+
+1.Reduces Code Length
+ .You don’t have to write the full package name every time you use a class.
+
+Example= java.util.ArrayList l =new java.util.ArrayList(); //full qualified name
+
+if me import java.util.ArrayList; // no need to write full qualified name
+
+Ex= ArrayList l =new ArrayList();
+
+2.Improves Readability & Maintainability
+
+ .Code looks cleaner and is easier to understand without long package names.
+
+How many types of import statement
+1.Explicit
+2.Implicit 
+
+Q= which import statement is best for use ? 
+Ans= Explicit
+
+Q= Which Package is Not Required to Import in Java?
+
+Ans=The java.lang package is Not Required to Import because it automatically imported in every Java program, so you do not need to import it manually.
+
+ Why?
+ The java.lang package contains fundamental classes that are essential for Java programs, so Java automatically includes them.
+ ✅ It contains essential classes like System, String, Math, Object, etc.
+
+
+if we have two class in the same working directory we don't need to import the package 
+Note=Java automatically recognizes classes from the same package.
+
+Q. How Many package Statements Can a Java Program Have?
+ A Java program can have only one package statement, and it must be the first line (excluding comments) in the Java file.
+ Only one package statement per file
+ If we need multiple packages, we can import package.
+
+
+Q How Many import Statements Can a Java Program Have?
+ ✅ There is no limit to the number of import statements you can use in a Java program.
+
+_________________________________________________________________________________________
+
+
+
+                                   Abstract 
+what is abstract 
+abstract is a keyword in java is used to define abstract class and abstract method.
+
+
+Q1.Abstract is only applicable for class and method
+Note=not applicable for variable
+
+Q2.what is the mean of abstract
+abstract mean incomplete 
+
+Q3.what is abstract method and why we define
+A= An abstract method is a method that is declared in an abstract class. if we don't no the  
+   implementation so we can define abstract method
+  
+
+Note="An abstract method is used only for declaration, not for implementation."
+
+Q4.who is the responsible to provide implementation
+   child class is responsible for implementation
+
+Abstract method  only for declaration but not for  implementation. "The child class is responsible for providing the implementation."
+
+
+Syntax of abstract method =public abstract void demo();
+
+
+for example
+
+
+public abstract class Vehicle {
+
+    // Abstract method (no implementation) //we don't now the which kind of wheels two willer four willer
+     public abstract int getNoOfWheels();   //this case we can use abstract method                                       
+}
+
+one more example
+
+public abstract class Fruit{
+
+
+public abstract String getTest(); // we don't now which type of food mango,apple in this case
+                                  //we declare abstract method without knowledge of implementation
+}
+
+Like Programming example
+
+
+public abstract class Loan{
+
+public abstract double getIntrestRate(); //we don't now which type of personal loan gold loan home loan
+                                       // different intrest rate PL 15% gold L 10% Home L 8% 
+                                      //we dont't now the implemanttion we can declare abstract   
+                                       //getIntrestRate method 
+}
+
+which abstract method is valid or not
+
+1.public abstract void m1(){ //not valid because abstract method does not body
+}
+2.public void m1(); //did not provide implementation creating error
+3.public abstract void m1(); //it is valid
+4.public void m1(){// It is not abstract method
+}
+
+What is abstract class
+abstract class is partially implemented class 
+
+abstract class is not possible to create object because abstract class contain abstract method. and abstract method only declaration not for implementation 
+
+Note= If a class contains at least one abstract method then compulsory that class should be declared as abstract
+
+Note: If a class contains at least one abstract method, it is mandatory to declare the class as abstract.
+
+Note= abstract class can contain zero no of abstract method
+
+Abstract class does dot contain any abstract method happily we can define class as abstract. abstract class can contain zero no of abstract method
+
+
+Abstract class Vs Abstract method
+
+"Note: In an abstract class, every abstract method must be implemented in the child class (subclass); otherwise, a compile-time error will occur."
+                                 
+                                OR
+
+"An abstract class requires all its abstract methods to be implemented in the child class (subclass); otherwise, a compile-time error will occur."
+
+
+Q. we don't want to all abstract method providing implementation in child class how we can do.
+Ans= we can declare child class as abstract then not compulsory  all abstract method providing implementation in child class 
+                                          OR
+
+Q: What if we don't want to implement all abstract methods in the child class?
+A: We can declare the child class as abstract. In that case, it is not compulsory to implement all abstract methods in the child class.
+
+
+Q:   Who is responsible for implementing the remaining abstract methods?
+Ans: The next-level child class (e.g., a sub-sub child class) is responsible.
+
+Q. what is the use of declaring abstract method in parents class  
+A= If i am not declare abstract method in the parent class. but child class may provide or may not be provide
+   implementation. if we declare  abstract method in parent class. then we mandatory to provide implementation 
+   in child class. 
+ 
+Q: What is the use of declaring an abstract method in the parent class?
+A: If we do not declare an abstract method in the parent class, the child class may or may not provide an  
+   implementation. However, if we declare it as abstract, then it becomes mandatory for the child class to provide an   
+   implementation.
+
+For Example= if we define vehicle class and declare abstract method getnoOfWeels() so child class mandatory  provide an implementation not skip.
+
+Note= also for use polymorphism 
+
+
+
+
+Note : If I provide implementation for all abstract methods, can we create an object or not? Why?"
+
+ANS = ❗ Abstract class is incomplete by design — Java does not allow object creation of any class marked with 
+          abstract, no matter if all methods are implemented or not.
+
+OR
+
+No Sir, even if all abstract methods are implemented, we still can't create an object of an abstract class.
+Because Java doesn’t allow object creation of any class marked with abstract — abstract means the class is incomplete by design, and it's meant to be inherited, not instantiated.
+
+
+NOTE : Important point
+
+1.Can a class extend multiple classes in Java?
+❌ नहीं, Java में multiple class inheritance allowed नहीं है (Diamond Problem की वजह से)।
+Java में एक class सिर्फ एक class को extend कर सकती है।
+
+2.Can an interface extend a class?
+➡️ ❌ नहीं, interface सिर्फ दूसरे interface को extend कर सकता है, class को नहीं
+। No, an interface extends another interface, not a class.
+
+3.Can an abstract class implement an interface?
+➡️ ✅ हाँ, abstract class interface को implement कर सकती है।
+वो चाहें तो कुछ methods को implement करे या न करे।
+
+4.Can a class both extend another class and implement an interface?
+➡️ ✅ हाँ, एक class एक दूसरी class को extend कर सकती है और एक या ज़्यादा interfaces को implement कर सकती है
+   class Dog extends Animal implements Pet, Runnable {
+}
+
+5.
+
+
+_____________________________________________________________________________________________________________________________________________
+
+                                    
+                                                       Member Modifier
+
+Access Modifier control the accessibility class method and variable in java 
+there are four types of access modifier
+1.public 2.private 4.protected 4.default
+
+1.public: "A public class, method, or variable is accessible from anywhere in the program, including from outside its package."
+2.private:we can declare private variable and private method. and only accessible in the same class
+. Private: We can declare private variables and private methods, which are only accessible within the same class."
+3:default: default accessible with in a same package. it is a package level modifier 
+4.protected:we can declare protected variable and method then we can access within the same package anywhere but outside package only in child class
+4. Protected: We can declare protected variables and methods, which can be accessed anywhere within the same package, but outside the package, they can only be accessed in a child class."  
+_______________________________________________________________________________________________________________________________________________
+
+                                                          Interface
+Q. what is interface ?
+A= An interface is a blueprint of a class that define a set of abstract methods and by default  
+   public static final variables. from java 8 interface can also have default and static method  
+   with implementation. Java 9 further introduced private methods in interfaces. Interfaces are  
+   mainly used to achieve abstraction, support multiple inheritance, and provide loose coupling .   
+
+🔷 Why Use an Interface?
+✅ Achieves Abstraction → Hides implementation details, defining only required behavior.
+✅ Supports Multiple Inheritance → A class can implement multiple interfaces, avoiding conflicts.
+✅ Encourages Loose Coupling → Reduces dependencies between components in a system.
+
+Loose Coupling means:
+
+Loose coupling means classes are not directly dependent on each other, they depend on abstractions (like interfaces), making the code flexible and easy to change.
+
+Classes are independent of each other's implementation. They interact only through interfaces or abstract classes.
+
+
+Q. why interface variables are  public static final ?
+A = Interface variables public: because accessible anywhere and child class provide implement
+
+   "Interface variables are static because they do not belong to any object (instance); they belong to the interface   
+   itself. and can be accessed directly using the interface name.""
+    
+    Interface variables final: Interface variables are meant to be constants (fixed values).
+    Since interfaces are designed to define behavior, not state, making variables modifiable would  
+    go against this principle. Once assigned, the value cannot be changed. 
+    final: Cannot be changed after initialization.
+  
+🔷 Common Interview Follow-Up Questions:
+❓ Can an interface have concrete methods?
+✔ Yes, from Java 8, interfaces can have default and static methods with implementation.
+
+❓ Can an interface have constructors?
+❌ No, because interfaces cannot be instantiated directly.
+
+❓ What is the difference between an abstract class and an interface?
+✔ Abstract Class: Can have constructors, instance variables, and method implementations.
+✔ Interface: Cannot have instance variables, but supports multiple inheritance.
+
+
+
+Q. what is default method in interface why java introduce and what use
+A= "A default method is a method in an interface that provides an implementation inside the interface. It was introduced in Java 8 to  
+   allow adding new methods to interfaces without breaking existing code."
+
+Q. What is a static method in an interface in Java?
+A= A static method is a method in an interface that provides an implementation inside the  
+   interface. they only belong to interface itself. Not to the implementing classes. Cannot be   
+   overridden by implementing classes.
+
+why we use static method
+
+static method does not need to any implementing class. static method belong to interface
+itself
+
+What is the default access modifier of interface methods?
+
+By default, interface methods are public abstract in Java.
+
+Interface is a service requirement specification.
+Interface are the blue print of the class
+✔ Before Java 8: Interfaces were 100% abstract
+❌ After Java 8: Interfaces are not 100% abstract anymore because they can have default and static methods.
+Interface is used to  achieve abstraction and multiple inheritance and also provide loos coupling                                                
+"An interface is used to achieve abstraction and multiple inheritance, and it also provides loose coupling." 
+
+
+Note= whenever we are implementing any interface method in child class. compulsory we should declare method must be public.
+
+"Note: Whenever we implement an interface method in a child class, we must declare the method as public."        
+
+✔ Note= whenever we are implementing any interface method in child class. compulsory we should declare 
+   method as public. why ?
+ a= because interface methods are by default public and abstract
+
+
+
+Note= whenever we are declaring interface in abstract method. every method must be provide   
+     implementation in child class. if we are unable provide implementation we must declare class as   
+      abstract.  
+                         OR
+
+"Whenever we declare an interface with abstract methods, every method must be implemented in the child class. If we are unable to provide an implementation, we must declare the class as abstract."
+
+
+
+
+
+Q. Difference between Abstract class and Interface
+
+
+🔷Abstract class
+
+1.Abstract class provide 0 To 100% abstraction
+2.Abstract class contain both concreate and abstract method
+3.Abstract class has constructor
+4.Abstract class does not support multiple inheritance
+5.If we know at least some part of the implementation, we should use an abstract class."
+  "If we know at least 1% of the implementation, we should use an abstract class." 🚀
+
+🔷Interface
+
+1.Interface provide 100% abstraction (before Java 8), but from java 8 support default and static method
+2."Before Java 8, an interface contained only public and abstract methods. From Java 8   
+   interfaces can also have default, static, and private methods."
+3.Interface does not contain constructor
+4.Interface support multiple inheritance
+5."If we don’t know any part of the implementation (0%), we should use an interface."
+
+
+
+Q why abstract class support constructor and interface does not support constructor
+
+A: Because an abstract class can have instance variables and state.
+   The constructor is used to initialize that state when a subclass is created.
+
+Interface: Because interfaces do not have instance variables or state to initialize.
+
+what is instance variable
+instance variable declare inside a class, but outside any method or constructor.
+
+
+Note Important Point
+
+1.Interface ki all method implement karna must he jaruri he nahi to error aayega. default or static ko nahi he jaruri
+
+2.Interface ke ander hum abstract method bhi declare kar sakte he "By default, interface method is abstract"
+
+3.Can we declare variables in interfaces?
+4.Can a class implement multiple interfaces?
+✅ Haan, Java mein ek class multiple interfaces ko implement kar sakti hai
+5.Can an interface extend another interface?
+✅ Haan, ek interface doosre interface ko extends kar sakta hai.
+
+
+6.Can an interface extend a class?
+➡️ ❌ नहीं, interface सिर्फ दूसरे interface को extend कर सकता है, class को नहीं।
+
+
+
+Practice Coding-Based Questions:
+Create an interface with one method and implement it in a class.
+
+Create an interface with a default method and override it in a class.
+
+Create a class that implements two interfaces having same method — resolve the conflict.
+
+Demonstrate interface reference = new implementing class() example.
+
+Write code where an interface extends another interface.
+
+
+
+ ______________________________________________________________________________________________________
+
+                                         Data Hiding 
+
+Note: Data hiding ensures that an external entity cannot directly access the internal data of a class. It is achieved by declaring variables as private and providing controlled access through getter and setter methods.
+
+
+Q. what is data hiding 
+A= outside person should not access our internal data directly
+
+✅Q. what is data hiding 
+ A= outside class can't access our internal data directly is called data hiding 
+
+Q. how to implement data hiding 
+A= by declaring variable as private modifier
+
+Q. what is the advantages of data hiding
+A= security is the advantages of data hiding outside class is not possible 
+
+1️⃣ How Does Data Hiding Work?
+
+Data members (variables) are declared private so they cannot be accessed directly from outside the class.
+Public methods (getters & setters) provide controlled access to modify or retrieve data.
+
+_________________________________________________________________________________________________________________________________
+                     
+                                                          Abstraction 
+
+Abstraction mean hiding the implementation and showing essential feature is known as abstraction
+
+what is the advantages of abstraction 
+security
+
+✅ Achieved via:
+
+Abstract Classes (abstract keyword)
+Interfaces (interface keyword)
+
+Advantages of Abstraction:
+✅ Hides unnecessary details, showing only relevant functionalities.
+✅ Hides unnecessary details, and showing only main functionalities.
+✅ Improves security by preventing direct access to implementation.
+✅ Enhances code reusability and modularity.
+
+what is modularity ?
+
+✅ Modularity means dividing a program into  smaller, independent, parts (modules), where each module handles a specific functionality.
+
+OR
+Modularity is breaking a big program into smaller, independent parts (modules), each handling a specific function. This makes the program easy to manage, reusable, and scalable." 🚀
+
+for Example = in the car case all the necessary feature are showing like steering gear, accelerator but  
+             unnecessary things are not showing like engine and internal working this concept is known            
+             abstraction  
+
+"For example, in the case of a car, all the necessary features such as the steering wheel, gear, and accelerator are visible to the user. However, unnecessary details like the engine and internal mechanisms are hidden. This concept is known as abstraction."
+
+for example =ATMs (Automated Teller Machines) – Users interact with buttons and screens to withdraw  
+             money, but the internal process of verifying 
+            credentials, updating the bank database, and processing transactions is hidden.
+
+
+__________________________________________________________________________________________________________________________________________
+
+                                                           Encapsulation
+
+
+✅ "Encapsulation means wrapping data members and member functions into a single unit. This is known as encapsulation."
+
+Q. how we can achieve encapsulation.
+A= two ways we can achieve encapsulation
+
+1.declare the variable as private 
+2.Provide Public Getter and Setter Methods. for modify and view the variable values 
+
+
+Encapsulation = data hiding + Abstraction
+
+data hiding=declare the variable as private 
+
+Abstraction= for bank example person check the balance on screen show balance Batton click and check the balance. the don't known the internal implementation which method is call 
+
+✅ "Abstraction: For example, in a banking system, a person checks their balance by clicking the 'Show Balance' button. They do not know the internal implementation or which method is called."
+ 
+Note= hiding data behind method  
+
+Q. what is tightly encapsulation 
+A= If all instance variables of a class are declare private variable such type of class is called  
+   tightly encapsulation  
+   
+✅ If all instance variables of a class are declared as private, then that class is considered tightly encapsulated. 
+
+   A: If all instance variables of a class are declared as private, and they are accessed only through public getter and setter methods, then such a class is    
+   said to be tightly encapsulated.
+
+✅ "if a parent class is not tightly encapsulated, the child class can be tightly encapsulated
+   Yes by declaring all its instance variables as private
+
+✅ Advantages of Encapsulation (Key Points)
+1️⃣ Data Hiding (Security) – Prevents direct access to data, ensuring controlled modification via methods.
+2️⃣ Prevents Accidental Data Modification – Only setter methods allow controlled updates with validation.
+3️⃣ Increased Maintainability & Flexibility – Internal implementation changes don’t affect external code.
+4️⃣ Improves Code Reusability – Encapsulated classes can be reused in multiple applications.
+5️⃣ Easier Unit Testing – Allows testing specific methods independently.
+6️⃣ Improves Readability & Organization – Groups related variables and methods for better structure.
+
+_________________________________________________________________________________________________________________________________
+            
+                                                     Inheritance
+
+Inheritance means to acquires the properties of parents and to create the specialized properties is known as inheritance
+
+"Inheritance means the child class acquires the properties of the parent class and adds specialized features is called inheritance."
+
+is-a relationship
+
+
+Advantages of inheritance
+
+code reusability
+reduce development time
+
+how to achieve and implement inheritance
+
+by using extends keyword
+
+Note= whatever member available in the parent automatically will come to the child this concept is known as inheritance
+
+                                 OR
+
+✅Note= "All members of the parent class are automatically available in the child class. This concept   
+         is known as inheritance." 
+
+
+✅"All members of the parent class are automatically available in the child class through extends keyword. This concept is known as inheritance."
+
+
+
+
+Note= "On the parent reference, you cannot call child-specific methods because child members are not available in the parent." ✅ 
+
+"On the parent reference, we cannot call child-specific methods or access child-specific variables."
+
+"On the child class reference, you can call methods available in both the parent and child classes."
+
+
+parents reference can be used to hold child class object. but by using that reference we can't  call any child specific method. we can call only 
+method available in parent class
+
+   
+ex= Parent p =new Child(); // correct parent can hold child object.
+
+Note= child reference can't be used to hold parents object   
+
+ex= Child c = new Parent();  //error
+
+Example=
+
+
+This things you should aware in the inheritance 
+
+class Parent{
+
+
+public void m1(){
+
+System.out.println("parent class method");
+}
+
+}
+
+class Child extends Parent{
+
+public void m2(){
+
+System.out.println("child class method");
+}
+
+
+}
+
+
+
+Public class Test{
+
+public static void main(String[] args){
+
+
+//First
+Parent p =new Parent();
+
+p.m1();
+p.m2(); // parent reference child specific method we can't call 
+
+
+//Second
+Child c= new Child();
+
+c.m1();
+c.m2(); // on the child reference we can call both method available in the parent class and child class
+
+//Third
+Parent p =new Child(); // parents reference can be used to hold child class object 
+
+p.m1(); // but by using this reference  method available in the parent class not using child n    
+          specific method
+p.m2(); // parents reference can't be used child specific method
+
+//Fourth
+Child c= new parent(); // child reference can't be used to hold parents object   
+}
+}
+
+
+
+Q. In the parent class which method we have to write
+Q: Which methods should be written in the parent class?
+
+A= The most common method which are common for all child classes. such type of all common method we have to write in the parent class
+
+Q. Child class which method which we have to write 
+A= child specific method 
+
+for example Loan= CarLoan, HomeLone, PresnolLoan  ever class contain 300 method
+                  250 are common method.so we can write 250 common method in separate Loan class.  
+                  and ever method come in child class by default.   
+                  
+                 like HomeLone extend Loan, and  PresnolLoan extends Loan
+
+                                  OR
+
+CarLoan, HomeLone, PresnolLoan  ever class contain 300 method
+                  250 are common method.so we can write 250 common method in separate Loan class.  
+                 These methods will automatically be inherited by all child classes.
+
+                 like HomeLone extend Loan, and  PresnolLoan extends Loan
+ 
+
+
+How many types of Inheritance 
+
+1.Single inheritance
+2.multilevel Inheritance
+3.multipal Inheritance
+4.Hierarchical Inheritance
+5.Hybrid Inheritance
+ 
+
+
+1.Single inheritance
+
+single child class, and single parent class this types of inhertance is called Single inheritance.
+
+"When a single child class inherits from a single parent class, this type of inheritance is called Single Inheritance."
+
+Key Points:
+✅ One parent, one child → Single Inheritance.
+✅ Uses the extends keyword to inherit from the parent class.
+✅ Promotes code reusability and efficiency.
+
+
+2.multilevel Inheritance
+
+what is multilevel Inheritance
+
+"When a child class inherits from a parent class, and then another child class inherits from that child class, forming a chain of inheritance, this type of inheritance is called Multilevel Inheritance."
+
+
+Whatever method available inside A class automatically available to B class. Whatever method available inside to B class automatically available to c class this type of inheritance is called multilevel inheritance
+
+✅"In multilevel inheritance, whatever methods are available in class A are automatically available in class B. Similarly, whatever methods are available in class B are automatically available in class C. This type of inheritance is called multilevel inheritance."
+
+Advantages of Multilevel Inheritance:
+✅ Code Reusability – Properties and methods are reused at multiple levels.
+✅ Extensibility – Additional features can be added without modifying existing code.
+✅ Method Overriding – Child classes can modify inherited methods for specific behavior.
+
+
+for Example=
+
+ Class A{
+
+All property present inside a by default available to class b 
+}
+class B extends A{
+
+All property of class a and  class B by default available to class c 
+
+}
+
+Class C extends B{
+
+All property of available class A , B 
+}
+
+
+3.multipal Inheritance
+
+✅ When a single child class inherits from multiple parent classes, this type of inheritance is called Multiple Inheritance."
+
+"When a single class extends more than one parent class, it is called multiple inheritance."
+
+Q. why java does not support multiple inheritance
+A= because of ambiguity problem and diamond access problem  
+ex 
+more than one parent p1 and p1 both have m1(); method child class confuse which parent method to call. they may be a chance of ambiguity problem   
+
+Q. how java support multiple inheritance
+A= using interface 
+
+Note= java support multiple inheritance in interface not in classes.
+
+Q: Why does Java does not support multiple inheritance with classes?
+A: Because of ambiguity problems and the diamond problem.
+
+Q. why this problem only in classes. but not in the interface
+
+A. because in classes multiple method implementation are there which method i have to execute  
+   that's why this  
+   problem is going to come. but in interface only for declaration are available but not  
+   implementation that's
+
+
+   why there is no such type of problem in interface    
+ 
+ Q.in interface we can take default method chance of ambiguity problems
+
+
+
+Q: Why does this problem occur only in classes but not in interfaces?
+A: In classes, multiple methods can have implementations, leading to ambiguity about which method to execute. However, in interfaces, only method declarations are present without implementations, so this issue does not arise.
+
+
+
+
+Note:  Java, multiple inheritance is incomplete by design. Java does not allow any class to extend more than one parent class, no 
+       matter if you change method names or not 
+
+===================================================================================
+
+4.Hierarchical Inheritance 
+
+"When multiple child classes inherit from a single parent class, this type of inheritance is called hierarchical inheritance."
+
+
+ Note: When multiple classes extend the same parent class, it is called Hierarchical Inheritance.
+
+
+ It is a reverse of multiple inheritance 
+
+Note= All class extend same class is called Hierarchical Inheritance  
+
+for Example
+
+class A{
+
+
+}
+
+class B extend A{
+
+}
+
+class C extends A{
+
+}
+
+Advantages of Hierarchical Inheritance:
+
+1.Code Reusability – Child classes reuse the methods of the parent class.
+
+2.Easy to Maintain – Changes made to the parent class are inherited by all the child classes, making the system easier to maintain.
+3.Logical Structure – It reflects a real-world relationship between the parent and child classes.
+
+
+Disadvantages of Hierarchical Inheritance:
+
+1.Tightly Coupled Classes – Changes in the parent class could affect all child classes.
+
+2.Reduced Flexibility – All child classes inherit the same methods from the parent, which may not always be ideal for  
+  all child classes.
+
+
+========================================================================
+
+5.Hybrid Inheritance
+
+ if multiple types of inheritance using simultaneously 
+
+ multiple group of inheritance using simultaneously is called hybrid inheritance
+When multiple types of inheritance are used simultaneously, it is called hybrid inheritance."
+
+ in java hydride inheritance is not support because hydride inheritance  using multiple inheritance  
+
+__________________________________________________________________________________________________________________________________________________
+•Types of relationship
+
+There are two types of relationship
+1.Is-A  relationship (Inheritance)
+2. Has-A relationship (Association)
+
+1.Is-A relationship: Whenever one class inherits another class, it is called an IS-A relationship
+
+Q.how we can achive is-a relationship
+ans.IS-A relationship can simply be achieved by using extends Keyword.
+
+Advantage of IS-A relationship 
+Code Reusability.
+Reduce redundancy.
+
+
+Disadvantages:
+IS-A relationship is tightly coupled, which means changing one entity will affect another entity.
+
+
+2. Has-A relationship: (Association) Whenever an instance of one class is used in another class, it is called HAS-A 
+                       relationship.
+                      
+    "When one class contains a reference of another class, it is called a HAS-A relationship in Java."
+
+
+   Advantages of Has-a relationship 
+
+ 1.Code Reusability: Instead of rewriting code, one class can use another class’s functionality by containing an object of it.
+ 2. Loose Coupling (Flexibility & Maintainability)
+
+
+   There are two forms of Association 
+
+1.Aggregation(weak bounding)
+2.Composition(strong bounding)
+
+_____________________________________________________________________________________________________________________
+ 
+                                          Method Signature
+
+
+Q. what is method signature 
+A= method signature contain method name followed by argument type
+
+example= public int m1(int i, float f)
+
+method signature is =m1(int , float); //name and argument type// i is not considering because i variable name 
+                                       // order name is also important like(int , float) 
+  
+Note= Return type is not a part of method signature in java // c++ Return type is a part of method signature 
+
+Note= within the same class two methods with the same signature is not allowed
+
+Note= whenever we are performing method call compiler should aware compiler should whether this method   
+      available in the class or not
+  
+"Note: Whenever we perform a method call, the compiler must be aware of whether the method is available in the class 
+       or not by checking its signature.".
+
+Q. Who uses the method signature?
+Q. who is going to use method signature
+A. compiler will use method signature while resolving method call  
+
+
+How does the compiler check?
+ How the complier will check 
+ while resolving method call compiler is always going to use method signature
+
+or
+
+While resolving a method call, the compiler always uses the method signature, which includes the method name and parameter list, to determine the correct method definition in the class.
+
+Note= Every class compiler will maintain one table which is called method table 
+     
+
+Example= 
+
+    class Test{
+
+    public void m1(int i){
+    }
+ 
+   public int m1(int j){
+
+   return 10;
+   }
+   public static void main(String[] args){
+
+   Test t =new Test();
+    t.m1();    //compiler will confuse both method signature is same
+}
+}
+
+
+Q. within the same class if two methods having the same signature what will happen 
+A= compile time error 
+
+________________________________________________________________________________________________________________
+
+                                             OVERLOADING 
+
+
+when two methods having same name but different argument types
+
+Two method name must be same
+method must be in the same class
+method number of argument must be different 
+
+number of argument must be different 
+sequence of argument must be different 
+types of argument must be different 
+
+Note: When two methods have the same name but different argument types, it is called method overloading. It is also known as compile-time polymorphism, static polymorphism, or early binding polymorphism, and it is handled by the compile
+
+
+method overloading is also known compile time polymorphism or static polymorphism or early binding polymorphism
+
+Method overloading in Java is based on the method signature, which includes:
+
+
+
+example
+
+class Test{
+
+public void m1(){
+System.out.println("no argument method");
+}
+
+public void m1(int 1){
+System.out.println("int argument method");
+}
+
+public void m1(double d){
+System.out.println("double argument method");
+}
+
+public static void main(String[] args){
+
+Test t =new Test();
+
+t.m1();//
+t.m1(10);
+t.m1(20.2);
+}
+}
+
+Note= Test t =new Test();  // t is what type? = Test type  // it is a runtime object  new Test();
+ 
+Q. runtime object is what type 
+A= Test type 
+
+in overloading method resolution always takes care by compiler based on reference type not based on runtime   
+  
+
+✅ "In method overloading, method resolution is always handled by the compiler based on the  
+     reference type, not at runtime."
+
+
+method resolution mean which method has to execute that process is called method resolution  
+
+
+
+Automatic promotion in method overloading 
+
+CASE:1
+
+Type promotion in method overloading means that if there is no exact match for a method’s parameter, Java automatically converts a smaller data type into a larger one. This concept is known as automatic type promotion. 
+
+Automatic promotion chart
+
+(byte convert to short) (short convert to int) (char convert to int)  (int convert to long) 
+(long convert to float) (float convert to double)   
+
+
+    byte--->sort--_            
+                   -->int--->long--->float--->double
+          char-----
+
+CASE:2
+
+example  
+public class Test1{
+
+public void m1(Object o){
+
+System.out.println("Object method");
+}
+public void m1(String s){
+
+System.out.println("String method");
+}
+
+public static void main(String[] args){
+
+Test1 t1=new Test1();
+
+t1.m1(new Object());
+t1.m1("abc");
+t1.m1(null); // In overloading exact match method will get highest priority 
+t1.m1(10); //
+}
+} 
+
+
+Note In overloading exact match method will get highest priority 
+
+Q in overloading parent argument and child argument both match the argument  which argument will  
+  get highest priority 
+A. child argument 
+
+Q in overloading parent argument and child argument which argument will get highest priority 
+A child argument will get highest priority as compare parent argument
+
+Q. in overloading child argument not exact match argument what will happen
+A.= pass parent argument
+
+Q. In method overloading, if the argument is a child class and does not exactly match any method   
+    parameter, what will happen?
+A.  If a method with an exact match for the child class argument is not found, Java will look for  
+    the closest matching superclass method in the overloaded methods. If a suitable parent class   
+    parameter is available, Java will promote the child object to the parent type and call that  
+    method. Otherwise, it 
+   will result in a compilation error.
+
+
+CASE:3
+
+public class Test2{
+
+public void m(String s){
+
+System.out.println("string method");
+}
+
+public void m(StringBuffer sb){
+
+System.out.println("StringBuffer method");
+}
+
+public static void main(String[] args){
+
+Test2 t1=new Test2();
+
+t1.m1("abc");
+t1.m1(new StringBuffer("aaa"));
+t1.m1(null); // in this case compilation error compiler will confuse like ambiguous error
+}
+}
+
+Q. why ambiguous error comes tell
+A= Java checks which method to call based on the argument type.
+   null can match both String and StringBuffer because both are reference types.
+   Java tires to find the best match, but:
+
+   String is not a subclass of StringBuffer.
+   StringBuffer is not a subclass of String.
+
+   Java cannot decide which method to call.
+
+   Because of this confusion, Java gives a compilation error (ambiguous method call).
+
+ CASE:4
+
+public class Test3{
+
+public void m(int i){
+
+System.out.println("general method");
+}
+
+public void m(int... i){
+
+System.out.println("Var-arg method");
+}
+
+public static void main(String[] args){
+
+Test3 t=new Test3();
+
+t.m();   // Var-arg method    //Var- arg method 0 no also     
+t.m(10,20); // Var-arg method
+t.m(30);   // general method // but in this case var arg method only single no; 
+}                            // general method concept is old and varagr method concept is new 
+}                           // java always prefer old concept  
+
+
+CASE:5
+
+Exact match method always going to get high priority   
+
+public class Test4{
+
+public void m(int i, float f){
+System.out.println("int, float method");
+}
+public void m(float f, int i){
+System.out.println("float f , int i");
+}
+public static void main(String[] args){
+
+Test4 t=new Test4();
+
+t.m(10,10.f);
+t.m(10.f, 10);
+//t.m(10,10); // ambiguous problem compiler will confuse 
+}
+}
+
+
+Note=The ambiguity occurs because both m(int, float) and m(float, int) require one type promotion, and Java cannot decide which one to prefer. 
+
+CASE:6  NOTE= In overloading Checked exception must be handle using try-catch block. 
+
+
+1️⃣ Method overloading works independently of the throws clause.
+2️⃣ Unchecked exceptions (ArithmeticException) do not require handling.
+3️⃣ Checked exceptions (ClassNotFoundException) must be handled using try-catch or throws.
+
+
+
+Important Points
+
+1. IN method overloading method different return type is allowed or not
+A= different return type is not allowed 
+   why
+Java compiler identifies methods based on the method name + parameter list, not based on the return type.
+
+1️⃣ Can we overload methods by changing only the return type?
+→ ❌ No, Java does not allow overloading by just changing the return type.
+
+2️⃣ On what basis does Java differentiate overloaded methods?
+→ Java differentiates overloaded methods based on method name + parameter list (number, type, order).
+
+3️⃣ Can we overload static methods?
+→ ✅ Yes, static methods can be overloaded.
+
+4️⃣ Can we overload main method?
+→ ✅ Yes, we can overload main() method, but only the original signature public static void
+
+5️⃣ Can we overload methods by changing access modifiers (e.g., public, private)?
+→ ❌ No, access modifiers don’t play a role in method overloading.
+
+6️⃣ Can we overload methods by changing the exception list (throws keyword)?
+→ ❌ No, exception list doesn’t affect method overloading.
+
+7️⃣ What happens if we pass null to an overloaded method?
+→ The most specific method will be called (based on parameter type hierarchy).
+
+____________________________________________________________________________________________________________
+ 
+                                                    OVERRIDING
+
+. Method name must be same
+.Method must be in a different class (inheritance required)
+. Method Number of argument must be same (like method signature)
+
+number of argument must be same 
+sequence of argument must be same 
+types of argument must be same
+
+
+✅Note= If the child class is not satisfied with parent class method implementation then the child class is allowed to redefined that method based on its requirement. now this process is called method overriding it is also kwon as runtime polymorphism and dynamic polymorphism. it is handle by JVM.     
+                                or
+
+
+Note= If the child class is not satisfied with parent class method implementation that particular  
+         method child class is allowed to redefined that method based on its requirement. now this    
+         process is called method overriding   
+
+
+Note= Whatever method parents has by default available to the child through inheritance. IF the child class is 
+not satisfied with parent class method implementation that particular method child class is allowed to  
+redefine this concept is known as overriding
+
+ 
+ parent class method is overridden method 
+ child class method is overriding method
+
+
+JVM is always going to check runtime object 
+
+Note= In method overriding method resolution always takes care by JVM. based on runtime object. not based on   
+       reference   
+
+✅Note= In method overriding method resolution always handle by JVM. based on runtime object. not based on   
+             reference type   
+ 
+method resolution mean which method has to execute that process is called method resolution  
+
+
+ 
+                                       // p is a reference type of parent 
+ 
+for Example=  Parent p = new Child();  // Child() is a runtime object AND // Child method will get the chance
+                                     // IN method overriding method resolution always takes care by JVM. based on   
+                                      runtime object. not based on reference   
+
+EXAMPLE
+
+
+class Parent{
+
+public void Money(){
+System.out.println("Property, Loan ,Home");
+}
+
+public void marry(){
+
+System.out.println("Parent Method:  aa,bb");
+}
+}
+
+class Child extends Parent{
+
+
+public void marry(){
+
+System.out.println("Child Method :  dd");
+}
+}
+
+public class MethodOverriding{
+
+public static void main(String[] args){
+
+Parent p =new Parent(); // which marry() method will get the chance, because runtime object is parent() parent    
+p.marry();              // method will run;  
+
+
+Child c =new Child(); // which method will get chance and run. Child() method because JVM will check runtime  
+c.marry();    // object Child() is a runtime object jvm will check runtime object contain method yes call this  
+             // method
+
+Parent p1 = new Child(); // which method will get chance and run. Child() method because JVM will check  
+                         //runtime object // and also known as method overriding
+p1.marry();                        
+}
+}
+
+
+
+NOTE= JVM will Check Runtime object. and will get the chance of runtime object method;
+
+Q: Parent p = new Parent(); Which method will be called?
+A= parent method because JVM will Check Runtime object. and will get the chance of runtime object method;
+
+
+Q. Parent p1 = new Child();
+A= Child method JVM will Check Runtime object. and will get the chance of runtime object method;
+
+
+
+                     RULES OF METHOD OVERRIDING
+
+1. Method names must be same and argument type must be same. including order // mean method signature
+
+2. return type must be same in overriding but this rule is applicable until 1.4 version. from 1.5 version 
+   onward covariant return type is also allow.
+
+Q. In overriding different return type is allowed or not ?   
+A= before 1.5 version must have same return type. but after 1.5 version covariant return type.it is possible   
+   to have different return type in overriding. but child class method return should be sub of parent class
+   method return this concept is known as covariant return type 
+
+Q. what is covariant return type
+A= child class method return should be sub of parent class method return this concept is known as covariant   
+   return type 
+
+
+Q. parent class method return object and child class method return is String 
+A= true
+
+Q. parent class method return String and child class method return is object 
+A= this is not covariant return type false
+
+Q. parent class method return double and child class method return int. is it valid or not ?
+A= It is not valid 
+Note= covariant return type concept is only applicable for object type. but not for primitives  
+
+❌ Why it doesn't work for primitive types?
+Covariant return types only work for object reference types, not for primitives like int, double, etc.
+
+📌 Because primitive types like int and double are not part of the inheritance hierarchy — int is not a subtype of double, even though it looks like it might be in terms of conversion.
+So this is invalid:
+ 
+for Example for Covariant
+
+class Parent{
+
+public object m1(){
+
+return null;
+}
+}
+
+class Child extends Parent{
+
+public String m1(){
+return null;
+}
+}
+
+
+
+                    ⭐ MODIFIER IN OVERRIDING
+
+.Private method is not applicable for method overriding
+.final is not applicable for method overriding
+
+Note= Parent class method is non final and we can declare child class method is final. It is 
+       possible but next level child class in not possible 
+ 
+       non final to final is possible. but final to non final is not possible  
+
+Note= Parent class method is not abstract we can declare child class method is abstract. It is  
+       not applicable 
+
+ Parent class method is abstract we can declare child class method is non abstract. It is  
+   applicable for method overriding
+
+ parent class method is abstract we can declare child class method is abstract. It is possible or not
+ It is possible.
+
+Note= synchronized to non synchronized. and non synchronized to synchronized. It is possible in  
+     overriding native to non native. and non native to native. It is possible overriding 
+
+          Private<default<protected<public 
+
+Note = the rule of access modifier in overriding is : we can't reduce the scope of access 
+       modifier. but we can increase the scope of access modifier.  
+
+✅Note= child class Access modifier must be greater than or equal to the parent class access modifier 
+
+"The access modifier of a child class must be greater than or equal to the parent class access modifier."
+
+for example
+
+class Parent{
+
+protected void m1(){
+
+}
+}
+
+class Child extends Parent{
+
+public void m1(){
+
+// rules followed= child class Access modifier must be greater than or equal to the parent class 
+    access modifier
+}
+}
+
+
+Note= if the parent class method is public, compulsory child class method is public. otherwise compile time  
+      error
+Note= if the parent class method is protected ,so compulsory we can declare in child class method is protected  
+      or public
+ 
+Note= if the parent class method is default, so we can declare in child class method is default  
+       protected public
+
+Note = If parent class method is private. in overriding private method is not applicable 
+
+
+
+                          ⭐ EXCEPTION HANDLING IN OVERRIDING 
+
+
+Note= If child class method throws any checked exception. compulsory parent class method should  
+     throws same checked exception or its parents. otherwise compile time error
+
+✅ Note= If parent class method throws any checked exception. compulsory child class method should  
+     throws same checked exception or its sub. otherwise compile time error
+
+
+ unchecked Exception you can use any ware any time. 
+
+Case1 
+
+Parent: public void m();
+Child: public void m() throws Exception // Error
+
+
+child class method throws any checked exception. compulsory parent class method should throws same checked  
+      exception or its parents.
+OR
+
+parent class method throws any checked exception. compulsory child class method should throws same checked  
+      exception or its sub.
+
+
+
+Case2
+
+Parent: public void m() throws Exception 
+
+Child: public void m() throws IOException // run successfully  
+
+Case3 
+
+Parent: public void m() throws IOException 
+
+Child: public void m() throws Exception // Error  
+
+Case4 
+
+Parent: public void m() throws IOException 
+
+Child: public void m() throws EOFException, FNFE // run  IOException is parent of  EOFException, FNFE 
+
+Case5 
+
+Parent: public void m() throws IOException 
+
+Child: public void m() throws EOFException, NPE // run  //NPE unchecked Exception you can use any ware any time. 
+
+
+Case6 
+
+Parent: public void m() throws IOException 
+
+Child: public void m() throws AE, NPE // run  //AE NPE unchecked Exception you can use any ware any time. 
+                                              // not restriction for unchecked exception
+
+
+
+                               ⭐ OVERRIDING IN STATIC
+
+static method to non static method overriding is not possible. and 
+
+non static method to static method overriding is not possible.
+
+Note= Static to Static override is possible. but is not overriding it is method hiding. 
+
+class Parent{
+
+public static void m1(){
+
+}
+}
+
+class Child extends Parent{
+
+public void m1(){  // it is not possible class level method is a static method. if you want to 
+                  //object level it is not possible  
+}
+}
+
+
+.non static method to static method overriding is not possible.
+
+class Parent{
+
+public  void m1(){
+
+}
+}
+
+class Child extends Parent{
+
+public static void m1(){  // it is not possible class level method is a static method. if you want 
+                         // to object level it //is not possible  
+}
+}
+
+
+
+Q. If both methods are static what will happen ?
+A= It is valid. but It is not method overriding. It is Method Hiding Concept  
+
+class Parent{
+
+public static void m1(){
+
+System.out.println("Parent Method");
+}
+}
+
+class Child extends Parent{
+
+public static void m1(){  
+
+System.out.println("Child Method");
+}
+}
+
+public class MHidingTest{
+
+public static void main(String[] args){
+
+
+Parent p =new Parent(); //Note If It is overriding method resolution always handle by JVM   
+                           based on runtime object
+                        // Parent(); is runtime object runtime method get chance
+p.m1();
+
+Child c = new Child(); // but It is Method hiding method resolution always handle by compiler  
+                        //based on reference type.                                            
+c.m1();  
+
+Parent p =new Child();  //parent method will call 
+
+p.m1();
+}
+}
+
+
+Note= It is Method hiding method resolution always takes care by compiler based on reference 
+                       // type. 
+
+✅ Note= It is Method hiding method resolution always handle by compiler based on reference type. 
+
+
+Q. Parent p =new Child()  what method will call in method hiding ?
+
+A= Parent class method will call. because Method hiding method resolution always handle by 
+    compiler based on reference type.
+
+Note= If both parent and child class methods are static. It will become Method hiding.
+
+Note= If both parent and child class methods are non static. It will become Method overriding.
+
+Q. Difference between method Hiding and method overriding ?
+
+A= Method-Hiding
+
+1.Both parent class and child class method should be static 
+2.Method resolution always takes care by compiler based on reference type
+3.Method Hiding is  compile time polymorphism or static polymorphism or early binding
+
+A=Method Overriding
+
+1.Both parent class and child class method should be non static.
+2.Method resolution always handle by jvm based on runtime object.
+3.method overriding is runtime polymorphism or dynamic polymorphism or late binding.
+
+
+
+                             Var-arg IN METHOD OVERRIDING
+
+
+class Parent{
+
+public void m1(int ...i){
+System.out.println("parent method");
+}
+}
+
+class Child extends Parent{
+
+public void m1(int i){
+System.out.println("Child method");
+}
+}
+
+// Note =it is method overloading not overriding. different parameter in method overloading method 
+   resolution always handle by compiler based on reference type  
+
+public class VarArgoverriding{
+
+public static void main(String[] args){
+
+Parent p =new Parent(); // parent method call
+p.m1();
+
+Child c= new Child();  //child method call
+
+c.m1(10);
+
+Parent p1 =new Child();  //parent method call
+
+p1.m1();
+
+Child() c =new Parent(); // Error child can't hold parent object
+}
+}
+
+Note= var rags method you can't override with normal method. if you are trying to override with normal method
+     it will become overloading not overriding.
+
+ 
+
+  but i want to overriding so you can declare parent class method and child class method  var-args achieve overriding
+   
+
+
+class Parent{
+
+
+public void m1(int ...i){
+
+System.out.println("parent method");
+}
+}
+
+class Child extends Parent{
+
+public void m1(int ...i){
+
+System.out.println("Child method");
+}
+}
+
+public class VarArgoverriding{
+
+public static void main(String[] args){
+
+Parent p =new Parent();  //it is overriding method resolution always  handle by JVM based on Runtime Object  
+p.m1(); //parent method call
+
+Child c= new Child(); 
+c.m1(10);     // child method call
+
+Parent p1 =new Child();
+p1.m1();       // child method call
+}
+} 
+
+
+                                OVERRIDING WITH VARIABLE 
+
+.overriding with respect to variable
+
+Note= overriding concept only applicable for method. but not for variable 
+
+Q. how the variable resolution will be there ?
+A= variable resolution is always takes care by compiler. based on reference type //same rule instance or   
+    static variable.
+
+Example
+
+class Parent{
+
+String s="parent";
+}
+
+class Child extends Parent{
+
+String s="child";
+}
+
+public class VariableOverriding{
+
+public static void main(String[] args){
+
+Parent p =new Parent();
+
+System.out.println(p.s);
+
+Child c= new Child();
+System.out.println(c.s);
+
+Parent p1 =new Child();
+
+System.out.println(p1.s);
+}
+}
+
+
+                 DIFFERENCE BETWEEN Method OVERLOADING AND OVERRIDING
+
+
+Difference between method overloading and overriding
+
+.Overloading
+
+1️⃣ Method name must be the same.
+2️⃣ Argument type must be different (at least in number, type, or order).
+3️⃣ Private, final, and static methods can be overloaded.
+4️⃣ Return type does not play a role in method overloading; overloading requires a different parameter list.
+   Return type is no restriction in overloading 
+5️⃣ Throws clause has no restriction in method overloading.
+6️⃣ In overloading, method resolution is always handled by the compiler based on the reference type.
+7️⃣ Overloading is also known as compile-time polymorphism, static polymorphism, and early binding.
+
+
+
+.Overriding
+
+
+
+
+
+
+
+
+                                   POLYMORPHISM
+
+one name with multiple form is known as polymorphism
+
+methods having same name but different argument types
+
+Note= same method name we can use different type of argument (more flexibility)
+
+🚀 It makes the code more flexible and reusable
+
+There are Two types of polymorphism 
+
+1.compile time polymorphism 
+2.runtime polymorphism 
+
+
+🔹 Advantages of Polymorphism in Java
+
+
+
+1️⃣ Code Reusability 🛠️
+
+The same method name can be used for different purposes, reducing duplicate code.
+Example: A single add() method can handle both integers and doubles.
+
+
+2️⃣ Flexibility & Maintainability 🔄
+
+Polymorphism allows modifications in code without affecting existing functionality.
+Example: If a new subclass is added, the existing code does not need major changes.
+
+✔ Improves readability and maintainability.  
+
+_________________________________________________________________________________________________________________________________
+                                     
+                            OBJECT TYPE CASTING
+
+6           16
+
+
+Object o =new String("waquar");   
+                                   
+StringBuffer sb =(StringBuffer)o;  // It is valid or not 
+
+
+                                   
+StringBuffer sb =(StringBuffer)o;  // Three rules are applicable for object type casting
+let A        B =    (C)        D;
+
+Q. Three rules are applicable for object type casting
+A= two rules will check compiler and one rules will JVM.
+
+
+Note= first compiler will check whether this (c) d conversion is legal or not 
+
+Note= RULE1 = the type of D and C must have some relationship ether parent to child or child to parent or same   
+            type. If there is no relationship then accrue compile time error 
+
+
+Example 
+
+Object o =new String("waquar");   
+                                   
+StringBuffer sb =(StringBuffer)o;
+
+
+o is what type = object type 
+c is what = StringBuffer
+
+the type of o and StringBuffer mush have some relation
+
+object and StringBuffer // parent and child relation rule1 passed 
+
+
+Example
+
+String s =new String("waquar");                                      
+StringBuffer sb =(StringBuffer)s; // compile time error
+
+No relation s and (StringBuffer) // compile time error
+
+
+what is second rule
+ones the first rule is valid like this (StringBuffer)s type casting. compiler will check second rule 
+SECOND RULE =compiler will check assignment is legal or not  
+
+
+String s =new String("waquar");                                      
+StringBuffer sb =(StringBuffer)s;  //compile time error 
+ A           B       C         D
+
+C must be same as A or its child second rule  
+
+Note= StringBuffer must be same as StringBuffer or its parent
+
+
+JVM will check only one rule. Third rule at runtime jvm will check
+
+
+object o =new String("waquar");    //runtime object is String("waquar");                                  
+StringBuffer sb =(StringBuffer) o;
+A            B      C           D
+
+Note=Third rule D must be same as C or its child 
+    Internal runtime object is String("waquar"); is nor same as StringBuffer. or its not child as StringBuffer.  
+                      
+                                        OR
+
+"The third rule states that D must be the same as C or its child. The internal runtime object, String("waquar"), is neither the same as StringBuffer nor a child of StringBuffer."
+
+The internal runtime object (String) is neither the same as StringBuffer nor its subclass.
+This will result in a ClassCastException at runtime.
+
+
+
+
+String s= new String("waquar");
+Object o =(object)s;
+
+Q. In this case how many object create 
+A= new object is not create but exiting object another type of reference variable  assign  
+ 
+how many object are there 
+only one // check sop(o==s); //true;
+
+how many reference variable are there 
+two reference variable 
+
+ 
